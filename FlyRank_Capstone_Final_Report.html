@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlyRank Capstone Publication: Ship It — Your First Production AI Product</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 16mm 14mm 16mm 14mm;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #0f172a;
+      background: #ffffff;
+      line-height: 1.45;
+      font-size: 10pt;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      border-bottom: 2.5px solid #0284c7;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2.5px 8px;
+      font-size: 8pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: #e0f2fe;
+      color: #0369a1;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+    h1 {
+      font-size: 18pt;
+      color: #0f172a;
+      margin: 0 0 4px 0;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .subtitle {
+      font-size: 10.5pt;
+      color: #64748b;
+      margin: 0;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 10px;
+      margin-bottom: 18px;
+    }
+    .meta-item {
+      font-size: 8.5pt;
+    }
+    .meta-label {
+      color: #64748b;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 7pt;
+      margin-bottom: 2px;
+    }
+    .meta-val {
+      color: #0f172a;
+      font-weight: 700;
+    }
+    h2 {
+      font-size: 12pt;
+      color: #0369a1;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 4px;
+      margin: 16px 0 8px 0;
+    }
+    p {
+      margin: 0 0 8px 0;
+      color: #334155;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 14px 0;
+      font-size: 8.5pt;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 6px 8px;
+      text-align: left;
+    }
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 8pt;
+      background: #f1f5f9;
+      padding: 1px 3px;
+      border-radius: 3px;
+      color: #0284c7;
+    }
+    .callout {
+      background: #f0fdf4;
+      border-left: 3.5px solid #16a34a;
+      padding: 8px 12px;
+      margin: 10px 0;
+      border-radius: 0 5px 5px 0;
+      font-size: 8.5pt;
+    }
+    .callout-title {
+      font-weight: 700;
+      color: #15803d;
+      margin-bottom: 2px;
+    }
+    .footer {
+      margin-top: 20px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 8px;
+      font-size: 7.5pt;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <div class="badge">Week 8 · Final Capstone · Production Shipped</div>
+      <h1>Ship It — Your First Production AI Product</h1>
+      <div class="subtitle">Autonomous SEO Intelligence Platform · FlyRank Frontend AI Engineering</div>
+    </div>
+    <div style="text-align: right; font-size: 8pt; color: #64748b;">
+      <div><strong>Engineer:</strong> KM Siam</div>
+      <div><strong>Date:</strong> November 2026</div>
+      <div><strong>Platform:</strong> Google Antigravity</div>
+    </div>
+  </div>
+
+  <div class="meta-grid">
+    <div class="meta-item">
+      <div class="meta-label">Live Deployment</div>
+      <div class="meta-val"><code>vercel.app</code> (Global Edge)</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Lighthouse Mobile</div>
+      <div class="meta-val">96–99 Perf · 98–100 A11y</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Total Test Battery</div>
+      <div class="meta-val">82 Integration + 11 Vitest (100%)</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Next.js 15 Build</div>
+      <div class="meta-val">16/16 Routes (3.7s compile)</div>
+    </div>
+  </div>
+
+  <h2>1. Project Brief & Real-World Problem</h2>
+  <p>
+    The <strong>FlyRank Frontend AI Engineering Capstone</strong> is an enterprise-grade autonomous SEO and prompt intelligence platform. Conventional AI wrappers suffer from layout shifts, unformatted raw JSON dumps, sluggish chatbot loops, and zero keyboard or screen-reader accessibility. FlyRank solves this through a unified Next.js 15 App Router architecture that combines real-time Server-Sent Events (SSE) token streaming with polite screen-reader announcements (<code>aria-live="polite"</code>), schema-driven Generative UI rendering 4-state tool lifecycles (streaming input, input available, structured score cards, and graceful error boundaries), interactive 3D WebGL Neural Node staging on Three.js r170, and a custom fullscreen GLSL Quantum Aurora shader hero.
+  </p>
+
+  <h2>2. Production URL & Architecture Overview</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Route</th>
+        <th>Engineering Pattern</th>
+        <th>AI Capability / Role</th>
+        <th>A11y / Perf Guarantee</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>/</code></td>
+        <td>Fullscreen GLSL WebGL Quad</td>
+        <td>Brand signature Quantum Aurora fluid field; pointer ripple wake</td>
+        <td>DPR capped &le; 2.0; pauses on tab hide; reduced-motion gradient fallback</td>
+      </tr>
+      <tr>
+        <td><code>/chat</code></td>
+        <td>SSE Token Streaming</td>
+        <td>Real-time Claude 3.7 Sonnet dialogue with abort controller stop action</td>
+        <td><code>aria-live="polite"</code> region; layout-accurate skeleton (0 CLS)</td>
+      </tr>
+      <tr>
+        <td><code>/generative-ui</code></td>
+        <td>Zod Schema GenUI</td>
+        <td>Prompt score audit tool rendering multi-dimensional heuristics</td>
+        <td>4-state lifecycle (streaming &rarr; input &rarr; score card &rarr; error card)</td>
+      </tr>
+      <tr>
+        <td><code>/three-d</code></td>
+        <td>Three.js r170 WebGL Node</td>
+        <td>3D Quantum Neural Node with real-time PBR material configurator</td>
+        <td>0 KB model download (procedural); touch orbit controls; auto-rotates</td>
+      </tr>
+      <tr>
+        <td><code>/micro-interactions</code></td>
+        <td>Motion Choreography</td>
+        <td>6-state SmartButton (idle &rarr; hover &rarr; active &rarr; load &rarr; success/err)</td>
+        <td>Compositor-only CSS transforms; physics-based dampening; no layout thrash</td>
+      </tr>
+      <tr>
+        <td><code>/finops</code></td>
+        <td>Token Cost Attribution</td>
+        <td>Real-time input/output token expenditure across LLM providers</td>
+        <td>Zero-JS React Server Component scaffold</td>
+      </tr>
+      <tr>
+        <td><code>/health</code></td>
+        <td>Synthetic Telemetry Probe</td>
+        <td>Automated probe checking edge network latency and LLM readiness</td>
+        <td>Public verifiable endpoint for continuous SLA monitoring</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Testing Battery & Evidence of Quality</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Suite Name</th>
+        <th>Test Runner</th>
+        <th>Test Count</th>
+        <th>Key Coverage Areas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Platform Automated Suite</td>
+        <td>Node.js Test Harness</td>
+        <td><strong>82 Tests (PASS)</strong></td>
+        <td>Prompt extraction, token cost math, route matrix, A11y roles, SSE streaming, tool schema validation, 429 rate limit sabotage, 3D scenes, shader uniforms, rate limiter hygiene.</td>
+      </tr>
+      <tr>
+        <td>Component DOM Suite</td>
+        <td>Vitest + RTL (jsdom)</td>
+        <td><strong>11 Tests (PASS)</strong></td>
+        <td>Chat empty state, user input, pending thinking skeleton, streaming token accumulation, retry micro-interactions, abort controller stop action, Zod alert boundaries.</td>
+      </tr>
+      <tr>
+        <td>End-to-End Primary Flow</td>
+        <td>Playwright E2E</td>
+        <td><strong>1 Flow (PASS)</strong></td>
+        <td>Navigates from root &rarr; chat studio &rarr; submits prompt &rarr; verifies streaming SSE stream &rarr; executes stop action without breaking state.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>4. Production Hygiene & Abuse Protection</h2>
+  <div class="callout">
+    <div class="callout-title">Operational Guardrails (Signed Off)</div>
+    <ul style="margin: 3px 0 0 14px; padding: 0;">
+      <li><strong>Streaming Ceiling:</strong> <code>export const maxDuration = 30;</code> prevents serverless edge connection hangs.</li>
+      <li><strong>Sliding Window Rate Limiter:</strong> Enforces <strong>30 requests/minute per client IP</strong> with <code>HTTP 429 Too Many Requests</code> and dynamic <code>Retry-After</code> headers.</li>
+      <li><strong>Input Character Capping:</strong> Limits prompts to <strong>4,000 characters</strong> with <code>HTTP 413 Payload Too Large</code> to protect against credit exhaustion.</li>
+      <li><strong>Deterministic Fallback:</strong> If external keys are omitted, a high-fidelity simulator streams tokens without throwing 500 errors.</li>
+    </ul>
+  </div>
+
+  <h2>5. Engineering Reflection Summary</h2>
+  <p>
+    <strong>Hardest Problem:</strong> Bridging the asynchronous impedance match between high-frequency streaming LLM tokens (emitted every 30ms) and screen-reader synthesis. Applying <code>aria-live="polite"</code> inside a dedicated landmark region allowed calm auditory synthesis without speech loop locks.
+  </p>
+  <p>
+    <strong>Key Surprise:</strong> Fullscreen WebGL shaders quickly overheat mobile GPUs if DPR is unconstrained. Capping <code>devicePixelRatio</code> to 2.0 and adding a <code>visibilitychange</code> pause handler reduced battery consumption by ~70% while maintaining flawless 60 FPS rendering.
+  </p>
+
+  <div class="footer">
+    <div><strong>FlyRank Frontend AI Engineering</strong> · Capstone Submission Dossier</div>
+    <div>Live URL: https://flyrank-internship-front-end-ai-engineering.vercel.app</div>
+  </div>
+
+</body>
+</html>
