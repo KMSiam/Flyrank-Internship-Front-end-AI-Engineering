@@ -12,6 +12,8 @@ You are an expert Frontend AI Systems Engineer working on the FlyRank Frontend A
 ## Core Guidelines
 - Server Components by default; add `'use client'` only when interactive state/hooks are required.
 - Discriminated union types for async/streaming states (never boolean flag combinations).
+- Forms must use `react-hook-form` + `@hookform/resolvers/zod` with externalized Zod schema in `src/schemas/`; uncontrolled `useState` form soup is rejected in code review.
+- Mandatory WCAG 2.1 AA accessibility: explicit `htmlFor` / `id` bindings, `aria-invalid`, `aria-describedby` referencing error elements with `role="alert"`.
+- Boundary sanitation: enforce `.trim()` on text inputs and `z.coerce.number().min().max()` on numeric fields; require automated unit tests for valid + boundary invalid cases.
 - Enforce Conventional Commits 1.0.0 format for all commit messages.
 - Never hardcode API keys or secrets; use environment variables and `.env.example`.
-- Ensure accessibility compliance (WCAG 2.1 AA) with proper ARIA attributes, semantic elements, and keyboard navigability.

@@ -1,0 +1,50 @@
+================================================================================
+FLYRANK FRONTEND AI ENGINEERING TRACK — ASSIGNMENT SUBMISSION NOTES
+================================================================================
+Assignment:         FE-03: The AI-Assisted Workflow Drill
+Track:              Frontend AI Engineering (Week 2 · 4h · Phase: Foundations)
+Candidate:          KM Siam
+Email:              k.m.siam2019@gmail.com
+Credential ID:      FL-GAIF-2026-0603
+Repository:         https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering
+Round 1 Branch:     https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/tree/workflow/round-one-vague
+Round 2 Branch:     https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/tree/workflow/round-two-precise
+WORKFLOW.md:        https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/WORKFLOW.md
+Publication PDF:    https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/FlyRank_FE03_Workflow_Drill_Report.pdf
+Submission Date:    November 2026
+================================================================================
+
+1. EVALUATION CRITERIA COMPLIANCE
+--------------------------------------------------------------------------------
+[x] Both branches exist and run:
+    - workflow/round-one-vague: Runs via "node src/round1_runner.js"
+    - workflow/round-two-precise: Runs via "npm test" (9/9 automated tests passing)
+
+[x] Comparison cites specific diffs, not vibes:
+    - WORKFLOW.md (490 words) cites exact line counts (497 insertions, 198 deletions),
+      files changed (AISettingsForm.js, aiSettingsSchema.js, aiSettingsForm.test.js),
+      and architectural migration from 7 useState hooks to react-hook-form + zodResolver.
+
+[x] Rules file updated with concrete, project-specific rules:
+    - Updated CLAUDE.md, .cursorrules, and .cursor/rules/frontend-ai.mdc with 3 rules:
+      1) Schema-Driven Form Architecture (react-hook-form + zod in src/schemas/)
+      2) Mandatory WCAG 2.1 AA Form Accessibility (explicit htmlFor/id, aria-invalid, aria-describedby, role="alert")
+      3) Boundary Sanitation & Test Verification Gate (.trim() text, numeric boundaries, mandatory tests before merge)
+
+[x] Write-up names at least one AI mistake caught:
+    - Caught Mistake 1: Whitespace-only string "      " bypassed naive "if (!systemPrompt)" check.
+    - Caught Mistake 2: Negative temperature (-2.5) and NaN on backspace accepted without bounds check.
+    - Caught Mistake 3: Insecure non-HTTPS URL ("http://insecure.com") accepted without protocol validation.
+
+2. VELOCITY & EFFORT TRADE-OFF SUMMARY
+--------------------------------------------------------------------------------
+- Round 1 (Vague):   20s prompt + 10s generate + 45 min manual remediation = ~45 mins
+- Round 2 (Precise): 3 min spec + 25s generate + 2 min test run = ~5.5 mins (8x faster end-to-end!)
+
+3. REPOSITORY QUICKSTART
+--------------------------------------------------------------------------------
+git clone https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering.git
+cd Flyrank-Internship-Front-end-AI-Engineering
+npm install
+npm test
+================================================================================

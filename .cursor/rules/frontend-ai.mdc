@@ -7,6 +7,9 @@ globs: **/*.{ts,tsx,js,jsx,md,json}
 
 - **Framework**: Next.js App Router (React 19) / TypeScript (Strict Mode).
 - **Styling**: Tailwind CSS + Shadcn UI + Lucide React.
+- **Forms**: `react-hook-form` + `@hookform/resolvers/zod` with schema in `src/schemas/`.
+- **Accessibility**: WCAG 2.1 AA (`htmlFor`/`id`, `aria-invalid`, `aria-describedby`, `role="alert"`).
+- **Sanitation**: `.trim()` on text, explicit `.min()`/`.max()` on numbers, mandatory edge-case test suite.
 - **AI Primitives**: Vercel AI SDK (`ai/rsc`, `@ai-sdk/react`), Streaming UI components.
 - **Commits**: Conventional Commits 1.0.0 (`feat:`, `fix:`, `docs:`, `chore:`).
 - **State**: Explicit discriminated unions for streaming/loading states.

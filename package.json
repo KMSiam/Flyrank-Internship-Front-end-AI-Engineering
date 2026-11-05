@@ -7,7 +7,8 @@
   "scripts": {
     "lint": "eslint .",
     "format": "prettier --write .",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "node src/round2_runner.js",
+    "test:round2": "node src/round2_runner.js"
   },
   "keywords": [
     "frontend-ai",

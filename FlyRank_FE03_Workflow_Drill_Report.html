@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FlyRank FE-03: The AI-Assisted Workflow Drill — Engineering Defense Report</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+    :root {
+      --primary: #0f172a;
+      --secondary: #1e293b;
+      --accent: #0284c7;
+      --accent-green: #10b981;
+      --accent-red: #ef4444;
+      --accent-purple: #7c3aed;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --bg-light: #f8fafc;
+      --border: #cbd5e1;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      color: var(--text-main);
+      background: #ffffff;
+      line-height: 1.5;
+      font-size: 10.5pt;
+    }
+    .page-break { page-break-after: always; }
+
+    /* Header Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, #090d16 0%, #1e293b 100%);
+      color: #ffffff;
+      padding: 28px 24px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      border-left: 6px solid #0284c7;
+    }
+    .tagline {
+      font-size: 9pt;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #38bdf8;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .hero-banner h1 {
+      font-size: 20pt;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .hero-subtitle {
+      font-size: 11pt;
+      color: #cbd5e1;
+      max-width: 95%;
+      margin-bottom: 14px;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 8.5pt;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .meta-item strong { display: block; color: #f8fafc; font-size: 9.5pt; }
+    .meta-item span { color: #94a3b8; font-size: 7.5pt; text-transform: uppercase; }
+
+    /* Sections */
+    h2 {
+      font-size: 13pt;
+      font-weight: 800;
+      color: var(--primary);
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 5px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 15px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    h3 {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-top: 12px;
+      margin-bottom: 5px;
+    }
+    p { margin-bottom: 8px; color: #334155; text-align: justify; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 16px 0;
+      font-size: 8.5pt;
+    }
+    th {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 7px 9px;
+      text-align: left;
+      font-weight: 600;
+      border: 1px solid #0f172a;
+    }
+    td {
+      padding: 6px 9px;
+      border: 1px solid #e2e8f0;
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #f8fafc; }
+
+    .badge-vague {
+      background: #fee2e2;
+      color: #b91c1c;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 7.5pt;
+    }
+    .badge-precise {
+      background: #dcfce7;
+      color: #15803d;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 7.5pt;
+    }
+
+    /* Comparison Cards */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 12px 0;
+    }
+    .compare-card {
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+    }
+    .compare-card.vague { background: #fff1f2; border-color: #fecdd3; }
+    .compare-card.precise { background: #f0fdf4; border-color: #bbf7d0; }
+    .compare-title { font-weight: 800; font-size: 10pt; margin-bottom: 6px; }
+    .vague .compare-title { color: #be123c; }
+    .precise .compare-title { color: #15803d; }
+
+    /* Code blocks */
+    pre, code {
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 8pt;
+    }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 8px 0;
+      line-height: 1.35;
+    }
+
+    .footer {
+      border-top: 1px solid #e2e8f0;
+      margin-top: 20px;
+      padding-top: 8px;
+      font-size: 7.5pt;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cover / Header Banner -->
+  <div class="hero-banner">
+    <div class="tagline">Frontend AI Engineering Track · Week 2 · Foundations Phase</div>
+    <h1>FE-03: The AI-Assisted Workflow Drill</h1>
+    <div class="hero-subtitle">
+      Empirical comparison between unguided generation (Round 1) and specification-directed, test-verified AI pairing (Round 2) across correctness, WCAG 2.1 AA accessibility, and edge-case resilience.
+    </div>
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span>Candidate</span>
+        <strong>KM Siam</strong>
+      </div>
+      <div class="meta-item">
+        <span>Assignment Code</span>
+        <strong>FE-03 (Foundations)</strong>
+      </div>
+      <div class="meta-item">
+        <span>Branches Compared</span>
+        <strong>round-one vs. round-two</strong>
+      </div>
+      <div class="meta-item">
+        <span>Verification Rate</span>
+        <strong>9/9 Tests (100% Pass)</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1: Executive Summary -->
+  <h2>1. Executive Summary &amp; The Core Lesson</h2>
+  <p>
+    In modern AI-accelerated software engineering, <em>"used AI to build it"</em> is not a distinguishing skill. The professional differentiator is <strong>directing AI agents with formal specifications, architectural boundaries, edge-case constraints, and automated verification loops</strong>.
+  </p>
+  <p>
+    This drill selected a core capstone-relevant component: an <strong>AI Model Preferences &amp; Provider Settings Form (<code>AISettingsForm</code>)</strong>. The component was built twice under strictly separated git branches:
+  </p>
+  <ul style="font-size: 8.5pt; padding-left: 20px; color: #334155; margin-bottom: 8px;">
+    <li><strong>Round One (<code>workflow/round-one-vague</code>):</strong> Triggered by a lazy, single-sentence prompt (<em>"build a settings form for my ai app"</em>) with output accepted without iteration.</li>
+    <li><strong>Round Two (<code>workflow/round-two-precise</code>):</strong> Directed by a structured specification citing file dependencies, Zod schema rules, WCAG 2.1 AA accessibility attributes, and mandatory automated test assertions.</li>
+  </ul>
+
+  <!-- Section 2: Concrete Branch Diff Analysis -->
+  <h2>2. Concrete Branch Diff &amp; Architectural Comparison</h2>
+  <p>
+    Executing <code>git diff workflow/round-one-vague..workflow/round-two-precise --stat</code> reveals <strong>497 insertions and 198 deletions</strong> across seven files, demonstrating fundamental architectural divergence:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Evaluation Dimension</th>
+        <th style="width: 35%;">Round 1: Vague Prompt (Unguided)</th>
+        <th style="width: 40%;">Round 2: Precise Prompt (Directed)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>State Architecture</strong></td>
+        <td>7 disconnected <code>useState</code> hooks; uncoordinated re-renders.</td>
+        <td>Unified <code>react-hook-form</code> with <code>zodResolver</code> and isolated renders.</td>
+      </tr>
+      <tr>
+        <td><strong>Schema Validation</strong></td>
+        <td>Ad-hoc imperative checks (<code>if (!apiKey)</code>); zero format rules.</td>
+        <td>Formal Zod schema (<code>aiSettingsSchema.js</code>) with regex, coercion, and bounds.</td>
+      </tr>
+      <tr>
+        <td><strong>Accessibility (a11y)</strong></td>
+        <td>Bare <code>&lt;label&gt;</code> tags without <code>htmlFor</code>; inputs lack <code>id</code>. Zero ARIA.</td>
+        <td>Strict WCAG 2.1 AA: <code>htmlFor</code>/<code>id</code> pairings, <code>aria-invalid</code>, <code>aria-describedby</code>, <code>role="alert"</code>.</td>
+      </tr>
+      <tr>
+        <td><strong>Edge Case Defense</strong></td>
+        <td>Accepts negative temperature (-2.5), <code>NaN</code>, blank whitespace prompts.</td>
+        <td>Explicit <code>.trim()</code>, numeric <code>.min(0.0).max(1.0)</code>, and safe HTTPS protocol check.</td>
+      </tr>
+      <tr>
+        <td><strong>Verification Suite</strong></td>
+        <td>Zero automated tests; manual manual inspection only.</td>
+        <td>Automated 9-assertion test suite (<code>aiSettingsForm.test.js</code>) passing 100%.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Section 3: AI Mistakes Caught -->
+  <h2>3. Critical AI Mistakes Caught in Round One</h2>
+  <div class="compare-grid">
+    <div class="compare-card vague">
+      <div class="compare-title">AI Mistake 1: Whitespace System Prompt Bypass</div>
+      <p style="font-size: 8pt; color: #475569; margin:0;">
+        The unguided AI wrote <code>if (!systemPrompt) setError(...)</code>. When submitted with seventeen space characters (<code>"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"</code>), JavaScript evaluates non-empty strings as truthy, silently accepting blank personas into the payload. Round 2 caught and fixed this via <code>z.string().trim().min(10)</code>.
+      </p>
+    </div>
+    <div class="compare-card vague">
+      <div class="compare-title">AI Mistake 2: Numeric Boundaries &amp; NaN Coercion</div>
+      <p style="font-size: 8pt; color: #475569; margin:0;">
+        The unguided AI bound temperature via raw <code>Number(e.target.value)</code>. Backspacing the input resulted in <code>NaN</code>, while negative inputs like <code>-2.5</code> passed validation freely. Round 2 enforced <code>z.coerce.number().min(0.0).max(1.0)</code> and verified boundary rejection.
+      </p>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- Section 4: Review Effort & Velocity Analysis -->
+  <h2>4. Review Effort &amp; End-to-End Velocity Analysis</h2>
+  <p>
+    A critical takeaway from the drill is the divergence between <em>initial generation speed</em> and <em>end-to-end delivery velocity</em>:
+  </p>
+
+  <div class="compare-grid">
+    <div class="compare-card vague">
+      <div class="compare-title">Round 1 Velocity Breakdown</div>
+      <ul style="font-size: 8pt; color: #475569; padding-left: 16px;">
+        <li><strong>Prompting Time:</strong> ~20 seconds (one sentence).</li>
+        <li><strong>Generation Time:</strong> ~10 seconds.</li>
+        <li><strong>Review &amp; Remediation Time:</strong> ~45 minutes (fixing missing labels, ARIA attributes, NaN crashes, and adding missing tests).</li>
+        <li><strong>Total End-to-End Time:</strong> <strong>~45 minutes</strong></li>
+      </ul>
+    </div>
+    <div class="compare-card precise">
+      <div class="compare-title">Round 2 Velocity Breakdown</div>
+      <ul style="font-size: 8pt; color: #1e293b; padding-left: 16px;">
+        <li><strong>Prompting &amp; Spec Time:</strong> ~3 minutes (formalizing constraints).</li>
+        <li><strong>Generation Time:</strong> ~25 seconds.</li>
+        <li><strong>Review &amp; Remediation Time:</strong> ~2 minutes (verifying test suite output).</li>
+        <li><strong>Total End-to-End Time:</strong> <strong>~5.5 minutes (8x Faster Overall!)</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Section 5: Concrete Rules Added to Governance -->
+  <h2>5. Three Project Rules Learned &amp; Added to Governance</h2>
+  <p>
+    The findings from this drill were codified directly into <code>CLAUDE.md</code>, <code>.cursorrules</code>, and <code>.cursor/rules/frontend-ai.mdc</code>:
+  </p>
+
+  <pre>
+1. Schema-Driven Form Architecture:
+   All user-facing forms must use `react-hook-form` paired with `@hookform/resolvers/zod` 
+   and an externalized Zod schema in `src/schemas/`. Disjointed `useState` form state 
+   soup and manual inline string validation (e.g. `if (!input) alert()`) are forbidden.
+
+2. Mandatory WCAG 2.1 AA Form Accessibility:
+   Every form input must be programmatically paired with a dedicated `<label htmlFor={id}>` 
+   matching the control's `id`. When validation errors exist, the input must declare 
+   `aria-invalid={true}` and `aria-describedby` pointing to an error container carrying `role="alert"`.
+
+3. Boundary Sanitation & Test Verification Gate:
+   Text inputs must enforce `.trim()` in their Zod schema to prevent whitespace-only bypasses, 
+   and numeric inputs must use `z.coerce.number()` with explicit `.min()` and `.max()` boundaries. 
+   Every new form component must be accompanied by an automated test suite before merging.
+  </pre>
+
+  <!-- Section 6: Verification Test Runner Output -->
+  <h2>6. Automated Verification Test Suite (9/9 Passed)</h2>
+  <p>
+    Running <code>npm test</code> (or <code>node src/round2_runner.js</code>) on <code>main</code> and <code>workflow/round-two-precise</code> confirms 100% test pass rate:
+  </p>
+
+  <pre>
+===============================================================
+ROUND 2: PRECISE PROMPT AUTOMATED VERIFICATION TEST SUITE
+Target: AISettingsForm + aiSettingsSchema
+===============================================================
+  ✔ PASS [1]: Valid enterprise configuration passes schema validation
+  ✔ PASS [2]: Invalid API key prefix rejected by regex constraint
+  ✔ PASS [3]: Short API key (< 16 characters) rejected
+  ✔ PASS [4]: Negative temperature (-0.25) rejected
+  ✔ PASS [5]: Temperature exceeding 1.0 (1.45) rejected
+  ✔ PASS [6]: Whitespace-only system prompt rejected after .trim()
+  ✔ PASS [7]: Non-HTTPS webhook URL (insecure http://) rejected
+  ✔ PASS [8]: Empty webhook URL gracefully accepted as optional
+  ✔ PASS [9]: AISettingsForm renders complete WCAG 2.1 AA semantic markup
+
+===============================================================
+TEST SUITE RESULTS: 9/9 TESTS PASSED (100% SUCCESS RATE)
+===============================================================
+  </pre>
+
+  <div class="footer">
+    <span>FlyRank Frontend AI Engineering Track · Assignment FE-03</span>
+    <span>Candidate: KM Siam · Repository: Flyrank-Internship-Front-end-AI-Engineering</span>
+    <span>Date: November 2026</span>
+  </div>
+
+</body>
+</html>

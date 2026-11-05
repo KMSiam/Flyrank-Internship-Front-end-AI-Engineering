@@ -61,6 +61,14 @@ This repository hosts projects, capstones, and weekly assignments for the **FlyR
 - Design for responsive viewports (`sm:`, `md:`, `lg:`, `xl:`) with dark mode support (`dark:` classes and CSS variables).
 - Maintain WCAG 2.1 AA accessibility: proper color contrast ratios, focus rings (`focus-visible:ring-2`), and semantic HTML tags.
 
+### Project-Specific Rules Learned from FE-03 Workflow Drill
+1. **Schema-Driven Form Architecture:**
+   All user-facing forms must use `react-hook-form` paired with `@hookform/resolvers/zod` and an externalized Zod schema in `src/schemas/`. Disjointed `useState` form state soup and manual inline string validation (e.g., `if (!input) alert(...)`) are strictly forbidden in code review.
+2. **Mandatory WCAG 2.1 AA Form Accessibility:**
+   Every form input must be programmatically paired with a dedicated `<label htmlFor={id}>` matching the control's `id`. When validation errors exist, the input must declare `aria-invalid={true}` and `aria-describedby` pointing to an error container carrying `role="alert"`. Form confirmation banners must declare `role="status"` with `aria-live="polite"`. Bare unassociated inputs without ARIA error semantics will fail review.
+3. **Boundary Sanitation & Test Verification Gate:**
+   Text inputs must enforce `.trim()` in their Zod schema to prevent whitespace-only bypasses, and numeric inputs must use `z.coerce.number()` with explicit `.min()` and `.max()` boundaries. Every interactive form component must be accompanied by an automated test suite verifying both valid submission and at least three boundary/invalid edge cases before merging.
+
 ---
 
 ## 4. Git & Commit Conventions (Conventional Commits 1.0.0)

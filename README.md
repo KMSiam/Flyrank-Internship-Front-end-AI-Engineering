@@ -81,7 +81,23 @@ npm run lint
 
 ---
 
-## 5. Repository Structure
+## 5. Completed Track Assignments & Milestones
+
+### Week 2 (FE-03 · 4h · Foundations): The AI-Assisted Workflow Drill
+- [**`WORKFLOW.md`**](./WORKFLOW.md): Comparative analysis (490 words) contrasting unguided generation (Round 1) vs. specification-directed AI pairing (Round 2) across correctness, accessibility, and edge cases.
+- [**Round 1 Branch (`workflow/round-one-vague`)**](https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/tree/workflow/round-one-vague): Form built via vague prompt with uncoordinated `useState` hooks, missing ARIA attributes, and boundary vulnerabilities.
+- [**Round 2 Branch (`workflow/round-two-precise`)**](https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/tree/workflow/round-two-precise): Form built via precise specification with `react-hook-form`, `zodResolver`, strict WCAG 2.1 AA markup, and 9/9 passing automated unit tests (`npm test`).
+- [**`FlyRank_FE03_Workflow_Drill_Report.pdf`**](./FlyRank_FE03_Workflow_Drill_Report.pdf): Publication-quality engineering report detailing the 497-line diff, AI mistakes caught, and velocity metrics.
+
+### Week 1 (FE-01 · 3h · Setup): Environment and AI Toolchain
+- [**`FlyRank_FE01_Environment_Toolchain_Report.pdf`**](./FlyRank_FE01_Environment_Toolchain_Report.pdf): Toolchain verification dossier covering Node.js LTS v24, Git, Claude Code, and Cursor.
+- [**`CLAUDE.md`**](./CLAUDE.md): Claude Code pairing guidelines, stack specifications, and 3 project rules learned from FE-03.
+- [**`.cursorrules`**](./.cursorrules): Cursor IDE configuration and `.cursor/rules/frontend-ai.mdc`.
+- [**`screenshot_claude_code.png`**](./screenshot_claude_code.png): Terminal screenshot of Claude Code executing tasks in the environment.
+
+---
+
+## 6. Repository Structure
 
 ```text
 Flyrank-Internship-Front-end-AI-Engineering/
