@@ -84,6 +84,22 @@ npm run lint
 
 ## 5. Completed Track Assignments & Milestones
 
+### Week 4 (FE-05 · 5h · Build): Accessible component fundamentals
+- **Assignment Overview:** Hand-crafted three accessible interactive components completely from scratch in React 19 + TypeScript adhering to the **W3C ARIA Authoring Practices Guide (APG)** patterns with zero component libraries.
+- **Components Built in [`playground/`](./playground):**
+  - 🪟 **Modal Dialog (`Modal.tsx`):** `role="dialog"`, `aria-modal="true"`, dynamic `aria-labelledby`/`aria-describedby`, strict `Tab`/`Shift+Tab` focus trap, `Escape` key close, and focus restoration to the triggering element.
+  - 📑 **Tabs Widget (`Tabs.tsx`):** `role="tablist"`, `role="tab"`, `role="tabpanel"`, roving `tabIndex` (`0` active, `-1` inactive), `ArrowLeft`/`ArrowRight` cycling, and `Home`/`End` extremity navigation.
+  - 📂 **Disclosure Widget (`Disclosure.tsx`):** Native button trigger with `aria-expanded` and `aria-controls` linked to an expandable `role="region"` with `aria-labelledby`, supporting `Enter` and `Space` activation.
+  - 🧪 **Interactive Playground (`playground/index.tsx`):** Live interactive playground mounted at `/playground` in Next.js 15.
+- **Source Code Audit & Comparison:**
+  - [**`NOTES.md`**](./NOTES.md): Comprehensive analysis comparing custom hand-crafted components against **shadcn/ui** (Radix UI primitives), documenting 5 concrete architectural gaps (Portal rendering to `document.body`, scroll locking with scrollbar width layout shift compensation, screen reader sibling inerting via `aria-hidden`, focus guard sentinels, and polymorphic `asChild` composition).
+- **TypeScript Prop Strictness:** `npx tsc --noEmit` verified with 0 errors and zero `any` escapes in component props interfaces.
+- **Assignment Deliverables:**
+  - [**`FlyRank_FE05_Accessible_Components_Report.pdf`**](./FlyRank_FE05_Accessible_Components_Report.pdf): Primary publication deliverable documenting APG compliance, focus trapping, and comparative audit.
+  - [**`playground/`**](./playground): Complete TypeScript component source code.
+  - [**`tests/accessibility.test.js`**](./tests/accessibility.test.js): Automated test suite with 10/10 passing tests (`npm test`).
+  - [**`submission_notes_fe05.txt`**](./submission_notes_fe05.txt): Copy-paste portal submission notes.
+
 ### Week 3 (FE-04 · 4h · Foundations): Capstone skeleton, deployed
 - **Live Preview URL:** [https://flyrank-internship-front-end-ai-engineering.vercel.app](https://flyrank-internship-front-end-ai-engineering.vercel.app)
 - **Deployment Strategy:** Practicing the professional standard of **deploying on day one**, with every commit landing on a live preview deployment. Configured with `vercel.json` and zero secrets committed.

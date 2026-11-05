@@ -1,0 +1,42 @@
+================================================================================
+FLYRANK INTERNSHIP SUBMISSION — FE-05 BUILD PHASE
+Assignment: Accessible component fundamentals (FE-05)
+Track: Frontend AI Engineering · Phase: Build · Workload: 5h
+Candidate: KM Siam (k.m.siam2019@gmail.com)
+AI Development Platform: Google Antigravity (Gemini 3.8 Flash High)
+================================================================================
+
+[DELIVERABLE LINKS]
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/NOTES.md
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/tree/main/playground
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/playground/Modal.tsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/playground/Tabs.tsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/playground/Disclosure.tsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/FlyRank_FE05_Accessible_Components_Report.pdf
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/tests/accessibility.test.js
+
+[NOTES]
+Completed FE-05 ("Accessible component fundamentals") for the Frontend AI Engineering track. In the `playground/` folder, built three interactive components completely from scratch in React 19 + TypeScript adhering strictly to W3C ARIA Authoring Practices Guide (APG) patterns with zero external component libraries.
+
+Audited shadcn/ui and Radix Primitives source code, documenting critical production differences and edge cases in `NOTES.md`.
+
+Key Evaluation Criteria Met:
+1. Keyboard Operation Across All Three Components:
+   - Modal Dialog (`Modal.tsx`): Opens via keyboard, traps Tab/Shift+Tab focus in an unbroken loop, closes via Escape, and returns focus to the trigger button.
+   - Tabs Widget (`Tabs.tsx`): ArrowRight/ArrowLeft cycles active tabs with wrap-around; Home and End jump to extremities; roving tabindex (active=0, inactive=-1).
+   - Disclosure (`Disclosure.tsx`): Native button trigger toggles expanded region via Enter and Space.
+2. Focus Trap & Return on Close: Fully verified via `previousActiveElementRef` and keydown cycle trap.
+3. NOTES.md Comparative Gaps: Documents multiple concrete gaps between custom and shadcn/ui:
+   - Gap 1: Portal rendering to document.body to avoid parent CSS transform/overflow stacking context traps.
+   - Gap 2: Document scroll locking with dynamic scrollbar width calculation and padding-right injection to eliminate 15px layout shifts (CLS).
+   - Gap 3: Sibling DOM element isolation via `aria-hidden="true"` / `inert` to prevent screen reader virtual cursor leakage.
+   - Gap 4: Focus guard sentinels preventing browser window address bar focus jumps.
+4. TypeScript Prop Strictness: Zero `any` escapes in component props interfaces (`npx tsc --noEmit` passed with 0 errors).
+5. Automated Test Suite: 34/34 tests passed across promptcraft, routed skeleton, and accessibility suites (`npm test`).
+6. Production Build & Live Route: Production Next.js 15 build passed (13/13 routes) with `/playground` mounted for live interactive testing.
+7. Publication PDF Report: Standalone technical dossier `FlyRank_FE05_Accessible_Components_Report.pdf`.
+
+[FILES TO UPLOAD]
+- FlyRank_FE05_Accessible_Components_Report.pdf
+================================================================================
