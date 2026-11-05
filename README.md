@@ -84,6 +84,26 @@ npm run lint
 
 ## 5. Completed Track Assignments & Milestones
 
+### Week 6 (FE-09 · 5h · Build polish): Testing pass — Vitest, RTL & CI Verification
+- **Live Preview URL:** [https://flyrank-internship-front-end-ai-engineering.vercel.app](https://flyrank-internship-front-end-ai-engineering.vercel.app)
+- **Testing Architecture Overview:** Scaled agentic verification by establishing Vitest + React Testing Library component tests, mock streaming AI routes, Playwright E2E specs, and an automated GitHub Actions CI pipeline.
+- **Core Architecture & Capabilities:**
+  - 🧪 **Vitest & React Testing Library:** Configured `vitest.config.js` with `jsdom` environment. Tests query strictly by accessible roles, labels, and text — preserving durability across CSS refactorings.
+  - 💬 **Comprehensive Message Renderer Tests:** 6 tests in [`tests/components/StreamingChat.test.jsx`](./tests/components/StreamingChat.test.jsx) verifying first-run empty states, typing, pending thinking skeletons, streaming token delta accumulation, 429 rate limit error states with working retry, and abort controls.
+  - 🛠️ **Tool Result & Form Component Tests:** Tests in [`tests/components/ToolComponents.test.jsx`](./tests/components/ToolComponents.test.jsx) and [`tests/components/ValidatedForm.test.jsx`](./tests/components/ValidatedForm.test.jsx) validating PromptScoreCard, ToolErrorCard, and Zod alert boundaries.
+  - 🎭 **Mocked AI Streaming Routes:** Client-side `ReadableStream` SSE mocks prevent real API token expenditures and network non-determinism during automated test runs.
+  - 🌐 **Playwright E2E Primary Flow:** [`e2e/primary-flow.spec.js`](./e2e/primary-flow.spec.js) walks the complete user journey on `/chat` (navigation &rarr; prompt entry &rarr; submission &rarr; streaming token verification).
+  - 🚀 **GitHub Actions CI Pipeline:** [`.github/workflows/ci.yml`](./.github/workflows/ci.yml) executes on every push/PR, verifying 63 integration tests, 11 vitest component tests, and Next.js 15 production build.
+- **Assignment Deliverables:**
+  - [**`FlyRank_FE09_Testing_Pass_Report.pdf`**](./FlyRank_FE09_Testing_Pass_Report.pdf): Primary publication deliverable documenting Vitest configuration, component tests, Playwright specs, and CI setup.
+  - [**`vitest.config.js`**](./vitest.config.js): Vitest runner configuration with jsdom.
+  - [**`tests/components/StreamingChat.test.jsx`**](./tests/components/StreamingChat.test.jsx): Chat component test suite.
+  - [**`tests/components/ToolComponents.test.jsx`**](./tests/components/ToolComponents.test.jsx): Tool result component test suite.
+  - [**`tests/components/ValidatedForm.test.jsx`**](./tests/components/ValidatedForm.test.jsx): Form component test suite.
+  - [**`e2e/primary-flow.spec.js`**](./e2e/primary-flow.spec.js): Playwright primary flow E2E test.
+  - [**`.github/workflows/ci.yml`**](./.github/workflows/ci.yml): GitHub Actions CI workflow.
+  - [**`submission_notes_fe09.txt`**](./submission_notes_fe09.txt): Copy-paste portal submission notes.
+
 ### Week 6 (FE-AA1 · 2h · Build+): Buttons with a Brain — Motion & State Micro-interactions
 - **Live Demo URL:** [https://flyrank-internship-front-end-ai-engineering.vercel.app/micro-interactions](https://flyrank-internship-front-end-ai-engineering.vercel.app/micro-interactions)
 - **Micro-interactions Overview:** Engineered the `SmartButton` component handling 6 distinct lifecycle states with intentional motion: *idle &rarr; hover/focus &rarr; active &rarr; loading &rarr; success/error &rarr; auto-revert to idle*.

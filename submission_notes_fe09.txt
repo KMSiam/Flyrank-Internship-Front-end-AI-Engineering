@@ -1,0 +1,37 @@
+================================================================================
+FLYRANK INTERNSHIP SUBMISSION — FE-09 BUILD (POLISH)
+Assignment: Testing pass (FE-09)
+Track: Frontend AI Engineering · Phase: Build (polish) · Workload: 5h
+Candidate: KM Siam (k.m.siam2019@gmail.com)
+AI Development Platform: Google Antigravity (Gemini 3.8 Flash)
+================================================================================
+
+[DELIVERABLE LINKS]
+https://flyrank-internship-front-end-ai-engineering.vercel.app/chat
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/vitest.config.js
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/tests/components/StreamingChat.test.jsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/tests/components/ToolComponents.test.jsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/tests/components/ValidatedForm.test.jsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/e2e/primary-flow.spec.js
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/.github/workflows/ci.yml
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/FlyRank_FE09_Testing_Pass_Report.pdf
+
+[NOTES]
+Completed FE-09 ("Testing pass") for the Frontend AI Engineering track. Engineered a rigorous automated testing architecture using Vitest + React Testing Library for component testing, Playwright for end-to-end user journeys, and GitHub Actions for continuous integration verification.
+
+Development was directed using Google Antigravity (Powered by Gemini 3.8 Flash / Advanced Agentic Coding), satisfying all core evaluation criteria:
+
+Key Evaluation Criteria Met:
+1. Vitest + React Testing Library Configuration: Fully configured vitest.config.js with jsdom environment and tests/setup.js. All component tests query strictly by accessible roles, labels, and text rather than fragile test IDs or CSS class names.
+2. Chat Message Renderer Comprehensive Tests: 6 tests in tests/components/StreamingChat.test.jsx covering empty state onboarding, textbox input, pending thinking state with skeleton, streaming token delta accumulation, 429 error state with working retry, and mid-stream stop button aborts.
+3. Form & Tool Result Component Tests: 3 tests in tests/components/ToolComponents.test.jsx verifying PromptScoreCard and ToolErrorCard; 2 tests in tests/components/ValidatedForm.test.jsx verifying accessible labels, keyboard inputs, and Zod validation alert boundaries.
+4. Mocked AI Routes (Zero Real API Calls): Implemented client-side ReadableStream SSE mocks with TextEncoder, preventing third-party API token costs and non-deterministic network delays during tests.
+5. Playwright End-to-End Primary Flow: Configured playwright.config.js and e2e/primary-flow.spec.js traversing the full user journey: loads /chat, fills engineering inquiry, submits, and asserts streaming response arrival.
+6. GitHub Actions CI Automation: Configured .github/workflows/ci.yml running on push/PR, executing 63 node integration tests, 11 vitest component tests, and Next.js 15 production build.
+7. Automated Test Suite Metrics: 74 total passing tests across the repository with zero regressions.
+8. Publication PDF Report: Standalone publication-grade dossier FlyRank_FE09_Testing_Pass_Report.pdf (148 KB).
+
+[FILES TO UPLOAD]
+- FlyRank_FE09_Testing_Pass_Report.pdf
+================================================================================

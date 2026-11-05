@@ -1,0 +1,33 @@
+name: Frontend AI Engineering CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-and-verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci || npm install
+
+      - name: Run Unit & Integration Suites (63 Tests)
+        run: npm test
+
+      - name: Run Vitest Component Suite with React Testing Library (11 Tests)
+        run: npx vitest run
+
+      - name: Build Next.js Production Bundle
+        run: npm run build
