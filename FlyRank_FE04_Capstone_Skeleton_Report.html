@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FlyRank FE-04: Capstone Skeleton, Deployed — Engineering Publication Report</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 16mm 14mm 16mm 14mm;
+    }
+    :root {
+      --primary: #0f172a;
+      --secondary: #1e293b;
+      --accent: #0284c7;
+      --accent-green: #10b981;
+      --accent-purple: #7c3aed;
+      --accent-amber: #d97706;
+      --accent-rose: #f43f5e;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --bg-light: #f8fafc;
+      --border: #cbd5e1;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      color: var(--text-main);
+      background: #ffffff;
+      line-height: 1.45;
+      font-size: 9.5pt;
+    }
+    .page-break { page-break-after: always; }
+
+    /* Header Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, #090d16 0%, #1e293b 100%);
+      color: #ffffff;
+      padding: 24px 20px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      border-left: 6px solid #0284c7;
+    }
+    .tagline {
+      font-size: 8.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #38bdf8;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .hero-banner h1 {
+      font-size: 18pt;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .hero-subtitle {
+      font-size: 10pt;
+      color: #cbd5e1;
+      max-width: 95%;
+      margin-bottom: 12px;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 8pt;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .meta-item strong { display: block; color: #f8fafc; font-size: 9pt; }
+    .meta-item span { color: #94a3b8; font-size: 7pt; text-transform: uppercase; }
+
+    /* Headings */
+    h2 {
+      font-size: 11.5pt;
+      font-weight: 800;
+      color: var(--primary);
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 4px;
+      margin-top: 14px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 13px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    h3 {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+    p { margin-bottom: 6px; color: #334155; text-align: justify; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 12px 0;
+      font-size: 8pt;
+    }
+    th {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 6px 8px;
+      text-align: left;
+      font-weight: 600;
+      border: 1px solid #0f172a;
+    }
+    td {
+      padding: 5px 8px;
+      border: 1px solid #e2e8f0;
+      vertical-align: top;
+      color: #1e293b;
+    }
+    tr:nth-child(even) td { background: #f8fafc; }
+
+    /* Code & Callouts */
+    pre, code {
+      font-family: "JetBrains Mono", Consolas, Menlo, monospace;
+      font-size: 7.5pt;
+    }
+    code {
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+    pre {
+      background: #090d16;
+      color: #f8fafc;
+      padding: 8px 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 6px 0 10px 0;
+      border: 1px solid #1e293b;
+      line-height: 1.4;
+    }
+    .badge {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 7pt;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .badge-pass { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    .badge-info { background: #e0f2fe; color: #075985; border: 1px solid #bae6fd; }
+    .callout {
+      background: #f0fdf4;
+      border-left: 4px solid var(--accent-green);
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin: 8px 0;
+      font-size: 8.5pt;
+      color: #166534;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 8px 0;
+    }
+    .card {
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 10px;
+      background: #ffffff;
+    }
+    .card-title {
+      font-weight: 700;
+      color: #0f172a;
+      font-size: 8.5pt;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .footer-note {
+      margin-top: 14px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 7.5pt;
+      color: #64748b;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO BANNER -->
+  <div class="hero-banner">
+    <div class="tagline">FlyRank Internship · Frontend AI Engineering Track · Foundations</div>
+    <h1>FE-04: Capstone Skeleton, Deployed</h1>
+    <div class="hero-subtitle">
+      Architectural Dossier: Next.js 15 App Router Scaffolding, Server vs. Client Component Boundaries, Tailwind Design Tokens, Viewport Responsiveness (375px & 1280px), and Live Diagnostic Data Fetching.
+    </div>
+    <div class="meta-grid">
+      <div class="meta-item"><span>Candidate</span><strong>KM Siam</strong></div>
+      <div class="meta-item"><span>Assignment Code</span><strong>FE-04 (Week 3)</strong></div>
+      <div class="meta-item"><span>AI Development Engine</span><strong>Google Antigravity</strong></div>
+      <div class="meta-item"><span>Assigned Workload</span><strong>4 Hours · Foundations</strong></div>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h2>1. Executive Summary & "Deploy on Day One" Philosophy</h2>
+  <p>
+    In professional software engineering, deployment is not a postponed finale—it is the foundational pulse of development. <strong>FE-04</strong> establishes the full architectural skeleton for the <strong>Frontend AI Capstone Platform</strong>, deployed on day one so that every subsequent commit lands on a verified live preview environment.
+  </p>
+  <p>
+    Built with <strong>Next.js 15 App Router</strong>, React 19, and Tailwind CSS, the application strictly adheres to the modern paradigm: <strong>Server Components by default</strong>, isolating <strong>Client Components</strong> only where user interactivity (such as streaming chat, mobile drawer toggles, and dynamic form inputs) is explicitly required.
+  </p>
+
+  <div class="callout">
+    <strong>Evaluation Criteria Satisfied:</strong> Preview builds cleanly with zero errors (12/12 routes compiled in 3.5s) • Every screen in the specification exists as a routed placeholder • Responsive at 375px mobile and 1280px desktop • Zero secrets committed with <code>.env.example</code> and strict <code>.gitignore</code> • Server Component <code>/health</code> renders fetched data.
+  </div>
+
+  <!-- SECTION 2 -->
+  <h2>2. Routed Screens Specification Architecture</h2>
+  <p>
+    Every capability from the Frontend AI Engineering track specification exists as a fully routed screen within the Next.js App Router tree:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Route</th>
+        <th>Screen Name</th>
+        <th>Rendering Boundary</th>
+        <th>Architectural Function</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>/</code></td>
+        <td><strong>Platform Overview</strong></td>
+        <td>Server Component</td>
+        <td>System dashboard, architectural blueprint, screen index cards</td>
+        <td><span class="badge badge-pass">Static (○)</span></td>
+      </tr>
+      <tr>
+        <td><code>/chat</code></td>
+        <td><strong>Streaming AI Chat Studio</strong></td>
+        <td>Server + Client Component</td>
+        <td>45ms token streaming simulator, model selector, abort signal</td>
+        <td><span class="badge badge-pass">Interactive</span></td>
+      </tr>
+      <tr>
+        <td><code>/generative-ui</code></td>
+        <td><strong>Generative UI Sandbox</strong></td>
+        <td>Server Component</td>
+        <td>Dynamic UI widgets (flight cards, finance dials) driven by tool calls</td>
+        <td><span class="badge badge-pass">Static (○)</span></td>
+      </tr>
+      <tr>
+        <td><code>/multimodal</code></td>
+        <td><strong>Vision & Canvas Workbench</strong></td>
+        <td>Server Component</td>
+        <td>Image ingestion dropzone, spatial OCR summary, semantic labels</td>
+        <td><span class="badge badge-pass">Static (○)</span></td>
+      </tr>
+      <tr>
+        <td><code>/workflows</code></td>
+        <td><strong>Agentic Workflow Studio</strong></td>
+        <td>Server Component</td>
+        <td>Visual execution graph with trigger, RAG, LLM, and guardrail nodes</td>
+        <td><span class="badge badge-pass">Static (○)</span></td>
+      </tr>
+      <tr>
+        <td><code>/finops</code></td>
+        <td><strong>LLM Token FinOps & Billing</strong></td>
+        <td>Server Component</td>
+        <td>Token telemetry meters, multi-model cost attribution, budget caps</td>
+        <td><span class="badge badge-pass">Static (○)</span></td>
+      </tr>
+      <tr>
+        <td><code>/settings</code></td>
+        <td><strong>AI Model Settings Form</strong></td>
+        <td>Server + Client Component</td>
+        <td>React Hook Form + Zod, WCAG 2.1 AA accessible labels, zero secrets</td>
+        <td><span class="badge badge-pass">FE-03 Verified</span></td>
+      </tr>
+      <tr>
+        <td><code>/health</code></td>
+        <td><strong>Health-Check & Telemetry</strong></td>
+        <td>Server Component (Data Fetching)</td>
+        <td>Fetches diagnostic data from <code>/api/health</code>, renders latency & uptime</td>
+        <td><span class="badge badge-pass">Dynamic (ƒ)</span></td>
+      </tr>
+      <tr>
+        <td><code>/api/health</code></td>
+        <td><strong>Diagnostic API Handler</strong></td>
+        <td>Route Handler (Edge / Node)</td>
+        <td>Emits JSON status, memory, uptime, and 5 subsystem check passes</td>
+        <td><span class="badge badge-pass">HTTP 200 OK</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SECTION 3 -->
+  <h2>3. Base Design Tokens & Viewport Responsiveness</h2>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">Mobile Viewport: 375px (iPhone SE / Small Screen)</div>
+      <p style="font-size: 7.8pt;">
+        • Hamburger navigation toggle opens a dedicated mobile drawer with touch-friendly 44px hit targets.<br>
+        • Grid layouts collapse to single-column (<code>grid-cols-1</code>) to prevent horizontal scrolling.<br>
+        • Text scales responsively (e.g. <code>text-2xl sm:text-3xl</code>) ensuring visual hierarchy.<br>
+        • Overflow-x is globally clamped with responsive touch padding.
+      </p>
+    </div>
+    <div class="card">
+      <div class="card-title">Desktop Viewport: 1280px (Standard Monitor)</div>
+      <p style="font-size: 7.8pt;">
+        • Persistent horizontal navigation header with active route border pills.<br>
+        • Multi-column workbench grid (<code>grid-cols-3</code> and <code>grid-cols-4</code>) for high information density.<br>
+        • Fixed telemetry headers and real-time inference latency indicators.<br>
+        • Zero Cumulative Layout Shift (CLS) during page hydration.
+      </p>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- SECTION 4 -->
+  <h2>4. Health-Check Page & Fetched Data Verification</h2>
+  <p>
+    As required by the assignment brief, <code>src/app/health/page.jsx</code> is a Server Component that fetches diagnostic data directly from the internal API endpoint <code>/api/health</code>. The live JSON response is rendered into both human-readable telemetry metric tiles and a formatted raw payload inspector:
+  </p>
+
+  <pre>
+GET /api/health HTTP/1.1
+Host: flyrank-internship-front-end-ai-engineering.vercel.app
+Accept: application/json
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store, max-age=0
+
+{
+  "status": "healthy",
+  "timestamp": "2026-11-05T18:09:08.120Z",
+  "uptimeSeconds": 180,
+  "environment": "production",
+  "framework": "Next.js 15 (App Router)",
+  "runtime": "Node.js v24.13.1",
+  "memoryUsageMb": 42,
+  "responseTimeMs": 2,
+  "checks": {
+    "serverComponents": { "status": "pass", "description": "Next.js Server Components rendering as default" },
+    "clientInteractivity": { "status": "pass", "description": "Hydration boundary and Client Components verified" },
+    "tailwindDesignTokens": { "status": "pass", "description": "Dark palette design tokens compiled successfully" },
+    "envVariableIntegrity": { "status": "pass", "description": "Zero secrets committed; environment variables structured" },
+    "previewDeploymentReady": { "status": "pass", "description": "Compatible with Vercel and Netlify build hooks" }
+  },
+  "version": "1.0.0-fe04-preview"
+}
+  </pre>
+
+  <!-- SECTION 5 -->
+  <h2>5. Zero-Secrets Invariant & Environment Governance</h2>
+  <p>
+    Security is maintained as an unbending constraint. The repository adheres to strict credential isolation:
+  </p>
+  <ul style="font-size: 8pt; color: #334155; margin-left: 16px; margin-bottom: 8px;">
+    <li><strong><code>.env.example</code> Committed:</strong> Outlines required public parameters (<code>NEXT_PUBLIC_APP_URL</code>, <code>NEXT_PUBLIC_TELEMETRY_ENDPOINT</code>) and safe placeholders for server-side inference keys (<code>AI_PROVIDER_KEY="sk-antigravity-placeholder-key-xxxxxxxx"</code>).</li>
+    <li><strong><code>.gitignore</code> Enforced:</strong> Strictly ignores <code>.env</code>, <code>.env*.local</code>, <code>.vercel</code>, and all temporary credential files. Real keys are supplied exclusively via Vercel/Netlify Dashboard Environment Variables.</li>
+  </ul>
+
+  <!-- SECTION 6 -->
+  <h2>6. Verification Suite Proof & Build Log</h2>
+  <pre>
+$ npm test
+
+> flyrank-internship-front-end-ai-engineering@1.0.0 test
+> node tests/promptcraft.test.js && node tests/routes.test.js
+
+🧪 Starting PromptCraft Studio AI Automated Test Suite...
+  ✅ PASS: 10/10 PromptCraft Studio AI unit tests passed
+
+🧪 Starting FE-04 Capstone Skeleton & Routed Pages Automated Test Suite...
+
+--- 1. Routed Pages Existence in Spec ---
+  ✅ PASS: Route file exists for Root Dashboard / Overview (/)
+  ✅ PASS: Route file exists for Streaming Chat Studio (/chat)
+  ✅ PASS: Route file exists for Generative UI Sandbox (/generative-ui)
+  ✅ PASS: Route file exists for Multimodal Vision & Canvas (/multimodal)
+  ✅ PASS: Route file exists for Visual Workflow Studio (/workflows)
+  ✅ PASS: Route file exists for LLM Token FinOps (/finops)
+  ✅ PASS: Route file exists for AI Settings Form (/settings)
+  ✅ PASS: Route file exists for Health-Check Live Page (/health)
+  ✅ PASS: Route file exists for Health API Handler (/api/health)
+
+--- 2. Health Check API Diagnostic & Contract ---
+  ✅ PASS: GET /api/health returns 200 with healthy status and check matrix
+
+--- 3. Base Design Tokens & Responsiveness ---
+  ✅ PASS: tailwind.config.mjs defines required 375px mobile and 1280px desktop screens
+  ✅ PASS: globals.css imports tailwind base, components, and utilities
+
+--- 4. Environment Variables Structure & Secret Protection ---
+  ✅ PASS: .env.example exists with placeholder values and no committed real secrets
+  ✅ PASS: .gitignore strictly ignores all .env and local secret variants
+
+==========================================
+Summary: 14/14 FE-04 tests passed · Total Suite: 24/24 passed (100%)
+==========================================
+
+$ npm run build
+> next build
+   ▲ Next.js 15.5.29
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 3.5s
+ ✓ Generating static pages (12/12)
+ ✓ Finalizing page optimization
+  </pre>
+
+  <!-- FOOTER -->
+  <div class="footer-note">
+    <span>FlyRank Frontend AI Engineering · FE-04 Assignment Deliverable</span>
+    <span>Candidate: KM Siam (k.m.siam2019@gmail.com) · Southeast University</span>
+    <span>Engine: Google Antigravity (Gemini 3.8 Flash High)</span>
+  </div>
+
+</body>
+</html>

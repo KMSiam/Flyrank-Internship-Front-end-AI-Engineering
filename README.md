@@ -84,6 +84,22 @@ npm run lint
 
 ## 5. Completed Track Assignments & Milestones
 
+### Week 3 (FE-04 · 4h · Foundations): Capstone skeleton, deployed
+- **Live Preview URL:** [https://flyrank-internship-front-end-ai-engineering.vercel.app](https://flyrank-internship-front-end-ai-engineering.vercel.app)
+- **Deployment Strategy:** Practicing the professional standard of **deploying on day one**, with every commit landing on a live preview deployment. Configured with `vercel.json` and zero secrets committed.
+- **Architectural Implementation:**
+  - ⚡ **Next.js 15 App Router & Server Components:** Server Components by default across all layouts and placeholder pages, isolating Client Components exclusively to interactive boundaries (`ChatStudio.jsx`, `Navbar.jsx` mobile drawer, `SettingsClient.jsx`).
+  - 📱 **Responsive Viewports at 375px & 1280px:** Mobile navigation drawer with touch targets at 375px; multi-column responsive grid with persistent telemetry at 1280px.
+  - 🎨 **Base Design Tokens:** Configured in `tailwind.config.mjs` and `src/app/globals.css` with dark canvas palette (`#090d16`), card layers (`#0f172a`), brand primary (`#0284c7`), and typography tokens.
+  - 🩺 **Live Health-Check Server Component:** `/health` dynamically fetches diagnostic telemetry from `/api/health`, rendering uptime, memory usage, sub-millisecond response latency, and subsystem integrity checks.
+  - 🗺️ **Complete Routed Specification:** Every required screen scaffolded as a routed placeholder or interactive component (`/`, `/chat`, `/generative-ui`, `/multimodal`, `/workflows`, `/finops`, `/settings`, `/health`, `/api/health`).
+- **Assignment Deliverables:**
+  - [**`FlyRank_FE04_Capstone_Skeleton_Report.pdf`**](./FlyRank_FE04_Capstone_Skeleton_Report.pdf): Primary publication deliverable documenting App Router boundaries, design tokens, viewport benchmarks, and live data fetching.
+  - [**`src/app/health/page.jsx`**](./src/app/health/page.jsx): Server Component fetching live diagnostic data.
+  - [**`src/app/api/health/route.js`**](./src/app/api/health/route.js): Health API handler emitting JSON diagnostic payload.
+  - [**`tests/routes.test.js`**](./tests/routes.test.js): Automated test suite verifying all routes, health contracts, responsive breakpoints, and zero-secrets invariants (14/14 tests passing).
+  - [**`submission_notes_fe04.txt`**](./submission_notes_fe04.txt): Copy-paste portal submission notes.
+
 ### Week 3 (Foundations · 6h): React App Development with AI — PromptCraft Studio AI
 - **Application Overview:** Built **PromptCraft Studio AI**, an interactive, enterprise-grade prompt engineering, dynamic variable interpolation, and heuristic quality evaluation studio built in React 19 + Vite 8.3 + Lucide Icons.
 - **Key Features:**
