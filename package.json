@@ -1,0 +1,23 @@
+{
+  "name": "flyrank-internship-front-end-ai-engineering",
+  "version": "1.0.0",
+  "description": "FlyRank Internship - Frontend AI Engineering Track Repository",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "keywords": [
+    "frontend-ai",
+    "ai-engineering",
+    "claude-code",
+    "cursor",
+    "react",
+    "nextjs",
+    "conventional-commits"
+  ],
+  "author": "KM Siam <k.m.siam2019@gmail.com>",
+  "license": "MIT"
+}
