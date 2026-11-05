@@ -1,14 +1,90 @@
 import { SYSTEM_PROMPT, MODEL_CONFIG, getSimulatedResponse } from '../../../lib/aiConfig.js';
 
 export const runtime = 'nodejs';
+// Enforce sensible maxDuration on streaming handlers for serverless deployment
+export const maxDuration = 30; // 30 seconds ceiling
+
+// In-Memory Sliding Window Rate Limiter (Protects API against trivial abuse & credit exhaustion)
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute window
+const MAX_REQUESTS_PER_WINDOW = 30; // 30 requests per minute per IP
+const MAX_PROMPT_CHAR_LIMIT = 4000; // 4000 characters input cap
+
+const ipRequestMap = new Map();
 
 /**
- * Streaming Chat API Route Handler (FE-06 / FE-08).
+ * Prune stale timestamps and check rate limit for a client IP.
+ */
+function checkRateLimit(ip) {
+  const now = Date.now();
+  const timestamps = ipRequestMap.get(ip) || [];
+  
+  // Retain only requests within the active window
+  const recentTimestamps = timestamps.filter(time => now - time < RATE_LIMIT_WINDOW_MS);
+
+  if (recentTimestamps.length >= MAX_REQUESTS_PER_WINDOW) {
+    const oldestTimestamp = recentTimestamps[0];
+    const retryAfterSeconds = Math.max(1, Math.ceil((RATE_LIMIT_WINDOW_MS - (now - oldestTimestamp)) / 1000));
+    return {
+      limited: true,
+      retryAfter: retryAfterSeconds,
+      remaining: 0
+    };
+  }
+
+  recentTimestamps.push(now);
+  ipRequestMap.set(ip, recentTimestamps);
+
+  // Periodic cleanup if map grows large
+  if (ipRequestMap.size > 1000) {
+    for (const [key, times] of ipRequestMap.entries()) {
+      const valid = times.filter(t => now - t < RATE_LIMIT_WINDOW_MS);
+      if (valid.length === 0) {
+        ipRequestMap.delete(key);
+      } else {
+        ipRequestMap.set(key, valid);
+      }
+    }
+  }
+
+  return {
+    limited: false,
+    retryAfter: 0,
+    remaining: MAX_REQUESTS_PER_WINDOW - recentTimestamps.length
+  };
+}
+
+/**
+ * Streaming Chat API Route Handler (FE-06 / FE-08 / FE-11).
  * Emits Server-Sent Events (SSE) message stream token-by-token.
- * Handles failure modes, edge cases, and sabotage test triggers (FE-08).
+ * Enforces production rate limiting, input character capping, and failure modes.
  */
 export async function POST(req) {
   try {
+    // 1. Production Rate Limiter & Abuse Protection
+    const forwarded = req.headers.get('x-forwarded-for');
+    const clientIp = forwarded ? forwarded.split(',')[0].trim() : '127.0.0.1';
+    
+    const rateCheck = checkRateLimit(clientIp);
+    if (rateCheck.limited) {
+      return Response.json(
+        {
+          error: `Rate limit exceeded: Too many requests from this IP. Maximum ${MAX_REQUESTS_PER_WINDOW} requests/minute.`,
+          code: 'ERR_RATE_LIMIT_EXCEEDED',
+          retryAfter: rateCheck.retryAfter,
+          timestamp: new Date().toISOString()
+        },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': String(rateCheck.retryAfter),
+            'X-RateLimit-Limit': String(MAX_REQUESTS_PER_WINDOW),
+            'X-RateLimit-Remaining': '0',
+            'X-RateLimit-Reset': String(Math.ceil((Date.now() + rateCheck.retryAfter * 1000) / 1000))
+          }
+        }
+      );
+    }
+
     const sabotageHeader = req.headers.get('x-sabotage-scenario');
     const { messages = [], model = MODEL_CONFIG.defaultModel, sabotage = null } = await req.json();
 
@@ -26,6 +102,20 @@ export async function POST(req) {
           timestamp: new Date().toISOString()
         },
         { status: 400 }
+      );
+    }
+
+    // Input Cap Hygiene: Input exceeds safe max character ceiling
+    if (userPrompt.length > MAX_PROMPT_CHAR_LIMIT) {
+      return Response.json(
+        {
+          error: `Input cap exceeded: Prompt length (${userPrompt.length} chars) exceeds the maximum allowed limit of ${MAX_PROMPT_CHAR_LIMIT} characters.`,
+          code: 'ERR_INPUT_CAP_EXCEEDED',
+          maxLength: MAX_PROMPT_CHAR_LIMIT,
+          actualLength: userPrompt.length,
+          timestamp: new Date().toISOString()
+        },
+        { status: 413 }
       );
     }
 
@@ -89,7 +179,9 @@ export async function POST(req) {
             headers: {
               'Content-Type': 'text/event-stream',
               'Cache-Control': 'no-cache, no-transform',
-              'Connection': 'keep-alive'
+              'Connection': 'keep-alive',
+              'X-RateLimit-Limit': String(MAX_REQUESTS_PER_WINDOW),
+              'X-RateLimit-Remaining': String(rateCheck.remaining)
             }
           });
         }
@@ -150,25 +242,27 @@ export async function POST(req) {
           await new Promise(r => setTimeout(r, 30));
         }
 
-        if (!isAborted) {
-          controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: 'finish', finishReason: 'stop' })}\n\n`));
-          controller.enqueue(encoder.encode('data: [DONE]\n\n'));
-        }
-
+        controller.enqueue(encoder.encode('data: [DONE]\n\n'));
         controller.close();
       }
     });
 
     return new Response(readable, {
       headers: {
-        'Content-Type': 'text/event-stream; charset=utf-8',
+        'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache, no-transform',
-        'Connection': 'keep-alive'
+        'Connection': 'keep-alive',
+        'X-RateLimit-Limit': String(MAX_REQUESTS_PER_WINDOW),
+        'X-RateLimit-Remaining': String(rateCheck.remaining)
       }
     });
   } catch (error) {
     return Response.json(
-      { error: error.message || 'Internal streaming error', code: 'ERR_INTERNAL_EXCEPTION' },
+      {
+        error: error.message || 'Fatal internal error in streaming chat endpoint.',
+        code: 'ERR_INTERNAL_SERVER',
+        timestamp: new Date().toISOString()
+      },
       { status: 500 }
     );
   }

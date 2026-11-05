@@ -11,7 +11,7 @@
     "build:vite": "vite build",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "test": "node tests/promptcraft.test.js && node tests/routes.test.js && node tests/accessibility.test.js && node tests/streaming.test.js && node tests/tools.test.js && node tests/error-states.test.js && node tests/smart-button.test.js && node tests/three-scene.test.js && node tests/audit.test.js && node tests/shader-hero.test.js",
+    "test": "node tests/promptcraft.test.js && node tests/routes.test.js && node tests/accessibility.test.js && node tests/streaming.test.js && node tests/tools.test.js && node tests/error-states.test.js && node tests/smart-button.test.js && node tests/three-scene.test.js && node tests/audit.test.js && node tests/shader-hero.test.js && node tests/production-hygiene.test.js",
     "test:vitest": "vitest run",
     "test:all": "npm test && npm run test:vitest",
     "test:e2e": "playwright test",
@@ -23,7 +23,8 @@
     "test:tools": "node tests/tools.test.js",
     "test:errors": "node tests/error-states.test.js",
     "test:buttons": "node tests/smart-button.test.js",
-    "test:shader": "node tests/shader-hero.test.js"
+    "test:shader": "node tests/shader-hero.test.js",
+    "test:hygiene": "node tests/production-hygiene.test.js"
   },
   "keywords": [
     "frontend-ai",

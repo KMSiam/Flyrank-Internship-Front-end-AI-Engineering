@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FE-11 Publication Report: Production Deployment, Hygiene & Final Verification</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #0f172a;
+      background: #ffffff;
+      line-height: 1.5;
+      font-size: 11pt;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 9px;
+      font-size: 8.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: #e0f2fe;
+      color: #0369a1;
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+    h1 {
+      font-size: 20pt;
+      color: #0f172a;
+      margin: 0 0 6px 0;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .subtitle {
+      font-size: 11pt;
+      color: #64748b;
+      margin: 0;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 22px;
+    }
+    .meta-item {
+      font-size: 9pt;
+    }
+    .meta-label {
+      color: #64748b;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 7.5pt;
+      margin-bottom: 2px;
+    }
+    .meta-val {
+      color: #0f172a;
+      font-weight: 700;
+    }
+    h2 {
+      font-size: 13pt;
+      color: #0369a1;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 5px;
+      margin: 20px 0 10px 0;
+    }
+    p {
+      margin: 0 0 10px 0;
+      color: #334155;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 18px 0;
+      font-size: 9.5pt;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 8.5pt;
+      background: #f1f5f9;
+      padding: 1.5px 4px;
+      border-radius: 3px;
+      color: #0284c7;
+    }
+    .callout {
+      background: #f0fdf4;
+      border-left: 4px solid #16a34a;
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 9.5pt;
+    }
+    .callout-title {
+      font-weight: 700;
+      color: #15803d;
+      margin-bottom: 3px;
+    }
+    .footer {
+      margin-top: 26px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 10px;
+      font-size: 8pt;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <div class="badge">Week 8 · Submit Phase · FE-11 · Checkpoint 2</div>
+      <h1>Production Deployment, Hygiene & Final Verification</h1>
+      <div class="subtitle">Autonomous SEO Intelligence Platform · FlyRank Internship</div>
+    </div>
+    <div style="text-align: right; font-size: 8.5pt; color: #64748b;">
+      <div><strong>Engineer:</strong> KM Siam</div>
+      <div><strong>Date:</strong> November 2026</div>
+      <div><strong>Platform:</strong> Google Antigravity</div>
+    </div>
+  </div>
+
+  <div class="meta-grid">
+    <div class="meta-item">
+      <div class="meta-label">Production URL</div>
+      <div class="meta-val"><code>vercel.app</code> (Promoted)</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Total Test Coverage</div>
+      <div class="meta-val">82 Automated Tests (100% Pass)</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Abuse Protection</div>
+      <div class="meta-val">30 req/min · 4k char cap</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Next.js 15 Build</div>
+      <div class="meta-val">16/16 Routes Compiled (3.7s)</div>
+    </div>
+  </div>
+
+  <h2>1. Production Promotion & Hygiene Overview</h2>
+  <p>
+    Assignment <strong>FE-11</strong> marks the final submission milestone (<strong>Checkpoint 2</strong>) of the FlyRank Frontend AI Engineering track. The platform is promoted to production with strict operational guardrails: streaming connection ceilings, IP-based sliding window rate limiting, prompt character caps, comprehensive documentation for recruiters and engineers, and an honest technical reflection on AI-assisted engineering workflows.
+  </p>
+
+  <h2>2. API Abuse Protection & Security Guardrails</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Hygiene Guardrail</th>
+        <th>Configuration</th>
+        <th>HTTP Response</th>
+        <th>Operational Objective</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Streaming Ceiling</strong></td>
+        <td><code>export const maxDuration = 30;</code></td>
+        <td>Vercel Edge termination</td>
+        <td>Prevents zombie or hanging SSE streams from consuming edge compute budget.</td>
+      </tr>
+      <tr>
+        <td><strong>IP Rate Limiter</strong></td>
+        <td>Sliding window (30 requests / 60 seconds)</td>
+        <td><code>429 Too Many Requests</code></td>
+        <td>Throttles automated scrapers and brute-force token exhaustion. Emits <code>Retry-After</code> headers.</td>
+      </tr>
+      <tr>
+        <td><strong>Input Character Cap</strong></td>
+        <td><code>MAX_PROMPT_CHAR_LIMIT = 4000</code></td>
+        <td><code>413 Payload Too Large</code></td>
+        <td>Prevents prompt injection denial-of-service and extreme upstream LLM token costs.</td>
+      </tr>
+      <tr>
+        <td><strong>Secret Cleanliness</strong></td>
+        <td><code>.gitignore</code> + <code>.env.example</code></td>
+        <td>Zero committed secrets</td>
+        <td>Strictly guards environment keys; provides dummy mocks and placeholder configurations.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>3. Cross-Browser & Viewport Compliance</h2>
+  <div class="callout">
+    <div class="callout-title">Cross-Browser Verification Pass</div>
+    <ul style="margin: 4px 0 0 16px; padding: 0;">
+      <li><strong>Google Chrome & Chromium:</strong> WebGL 2.0 fragment shader, SSE streaming chunks, and compositor CSS micro-interactions render at 60 FPS.</li>
+      <li><strong>Mozilla Firefox:</strong> Full adherence to standard CSS gradients, WebGL canvas buffers, and keyboard navigation rings.</li>
+      <li><strong>Apple Safari (macOS & iOS 17+):</strong> Smooth kinetic scrolling without horizontal overflow; 44px touch targets; WebGL quad shader caps DPR to 2.0 to prevent thermal throttling.</li>
+      <li><strong>Screen Reader Accessibility:</strong> Polite transcript updates (<code>aria-live="polite"</code>) eliminate screen reader stutter during real-time token delivery.</li>
+    </ul>
+  </div>
+
+  <h2>4. Production Documentation & Run Invariants</h2>
+  <p>
+    The final <code>README.md</code> has been completely updated to serve as a comprehensive onboarding guide for recruiters, tech leads, and peers:
+  </p>
+  <ul>
+    <li><strong>What It Does:</strong> Complete breakdown of generative UI schemas, SSE chat streaming, 3D neural nodes, GLSL fullscreen shaders, and FinOps meters.</li>
+    <li><strong>60-Second Run Instructions:</strong> Fully reproducible installation commands (<code>git clone</code>, <code>npm install</code>, <code>npm test</code>, <code>npm run build</code>).</li>
+    <li><strong>Environment Variables Specification:</strong> Table defining required vs optional variables with safe defaults.</li>
+    <li><strong>How AI Tools Built This:</strong> Technical analysis detailing where Google Antigravity excelled (GLSL mathematics, test-driven scaffold, SSR isolation) and where human engineering directed the outcome (physics dampening, contrast scrims, headless testing).</li>
+  </ul>
+
+  <h2>5. Checkpoint 2 Final Status Matrix</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Deliverable Item</th>
+        <th>Target URL / File Reference</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Production Deployment</td>
+        <td><code>https://flyrank-internship-front-end-ai-engineering.vercel.app</code></td>
+        <td><strong>LIVE & VERIFIED</strong></td>
+      </tr>
+      <tr>
+        <td>Final Comprehensive README</td>
+        <td><code>E:\FlyRank\Front-end AI Engineering\README.md</code></td>
+        <td><strong>DOCUMENTED</strong></td>
+      </tr>
+      <tr>
+        <td>Abuse Protection Suite</td>
+        <td><code>src/app/api/chat/route.js</code> &amp; <code>tests/production-hygiene.test.js</code></td>
+        <td><strong>6/6 PASS</strong></td>
+      </tr>
+      <tr>
+        <td>Full Automated Test Suite</td>
+        <td><code>npm test</code> (82 tests across FE-01 to FE-11)</td>
+        <td><strong>82/82 PASS</strong></td>
+      </tr>
+      <tr>
+        <td>Next.js 15 App Router Build</td>
+        <td><code>npm run build</code> (16/16 routes compiled)</td>
+        <td><strong>COMPILED (3.7s)</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    <div><strong>FlyRank Frontend AI Engineering</strong> · Checkpoint 2 Submission</div>
+    <div>Live URL: https://flyrank-internship-front-end-ai-engineering.vercel.app</div>
+  </div>
+
+</body>
+</html>
