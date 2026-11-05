@@ -84,6 +84,64 @@ npm run lint
 
 ## 5. Completed Track Assignments & Milestones
 
+### Week 5 (FE-07 · 5h · Build): Tool results and structured output in the UI
+- **Live Preview URL:** [https://flyrank-internship-front-end-ai-engineering.vercel.app/generative-ui](https://flyrank-internship-front-end-ai-engineering.vercel.app/generative-ui)
+- **Generative UI Overview:** Built a typed server-side tool execution pipeline and complete Generative UI lifecycle renderer in Next.js 15 App Router + React 19 + Zod.
+- **Core Architecture & Capabilities:**
+  - 🛠️ **Server-Side Tool Specification:** Implemented `scorePromptEngineering` in [`src/lib/tools/promptAuditTool.js`](./src/lib/tools/promptAuditTool.js) with strict `zod` schema validation and deterministic heuristic execution across Clarity (35%), Specificity (35%), and Guardrails (30%).
+  - 🔄 **4-State Lifecycle Rendering:** [`src/components/tools/ToolPartRenderer.jsx`](./src/components/tools/ToolPartRenderer.jsx) transforms raw execution steps into visually distinct treatments instead of JSON dumps:
+    - `input-streaming`: Shimmering skeleton, live token telemetry, and pulsing radar spinner.
+    - `input-available`: Structured pill argument inspector with parameter badges.
+    - `output-available`: Rich `PromptScoreCard` component with visual metrics.
+    - `output-error`: Designed `ToolErrorCard` with error taxonomy and interactive retry button.
+  - 📊 **Rich Component Visualization:** [`src/components/tools/PromptScoreCard.jsx`](./src/components/tools/PromptScoreCard.jsx) renders composite quality grade (`EXCELLENT`, `GOOD`, `MODERATE`, `NEEDS WORK`), dimension progress bars, hand-rolled responsive SVG bar chart, actionable recommendations checklist, and latency/token telemetry.
+  - 🛡️ **Designed Error State:** [`src/components/tools/ToolErrorCard.jsx`](./src/components/tools/ToolErrorCard.jsx) handles execution failures gracefully (e.g., `ERR_INSUFFICIENT_CONTEXT`) with human remediation guidance and a safe retry trigger without white-screen crashes.
+  - 🧪 **Interactive Generative UI Demo:** Live demonstration harness at [`src/app/generative-ui/page.jsx`](./src/app/generative-ui/page.jsx) allowing evaluators to trigger both standard execution and simulated failure recovery states.
+
+#### Tool Contract: `scorePromptEngineering`
+- **Tool Name:** `scorePromptEngineering`
+- **Description:** Audits and scores a prompt engineering template against clarity, specificity, and guardrails with optimization recommendations.
+- **Input Schema (`zod`):**
+  ```typescript
+  z.object({
+    promptText: z.string().min(5).max(4000),
+    targetDomain: z.enum(["coding", "compliance", "analysis", "general"]).default("general"),
+    minimumScoreThreshold: z.number().min(0).max(100).optional().default(70),
+  })
+  ```
+- **Return Shape:**
+  ```typescript
+  interface PromptAuditResult {
+    success: boolean;
+    overallScore: number;
+    verdict: "EXCELLENT" | "GOOD" | "MODERATE" | "NEEDS WORK";
+    dimensions: {
+      clarity: number;
+      specificity: number;
+      guardrails: number;
+    };
+    recommendations: string[];
+    telemetry: {
+      latencyMs: number;
+      tokenCount: number;
+      toolName: string;
+    };
+    error?: {
+      code: string;
+      message: string;
+      remediation: string;
+    };
+  }
+  ```
+- **Assignment Deliverables:**
+  - [**`FlyRank_FE07_Tool_Results_GenUI_Report.pdf`**](./FlyRank_FE07_Tool_Results_GenUI_Report.pdf): Primary publication deliverable documenting the tool contract, 4 lifecycle states, and error recovery boundaries.
+  - [**`src/lib/tools/promptAuditTool.js`**](./src/lib/tools/promptAuditTool.js): Server-side tool definition with Zod schema and execute function.
+  - [**`src/components/tools/ToolPartRenderer.jsx`**](./src/components/tools/ToolPartRenderer.jsx): Master 4-state lifecycle renderer.
+  - [**`src/components/tools/PromptScoreCard.jsx`**](./src/components/tools/PromptScoreCard.jsx): Rich component visualization.
+  - [**`src/components/tools/ToolErrorCard.jsx`**](./src/components/tools/ToolErrorCard.jsx): Designed error state component.
+  - [**`tests/tools.test.js`**](./tests/tools.test.js): Automated test suite with 6/6 passing tests (47/47 total test suite).
+  - [**`submission_notes_fe07.txt`**](./submission_notes_fe07.txt): Copy-paste portal submission notes.
+
 ### Week 4 (FE-06 · 6h · Build): Streaming AI chat interface
 - **Live Preview URL:** [https://flyrank-internship-front-end-ai-engineering.vercel.app/chat](https://flyrank-internship-front-end-ai-engineering.vercel.app/chat)
 - **Central AI Interaction Overview:** Built a hardened, production-grade streaming AI chat interface in Next.js 15 App Router + React 19 + Server-Sent Events (SSE).

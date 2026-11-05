@@ -1,0 +1,40 @@
+================================================================================
+FLYRANK INTERNSHIP SUBMISSION — FE-07 BUILD PHASE (CORE)
+Assignment: Tool results and structured output in the UI (FE-07)
+Track: Frontend AI Engineering · Phase: Build (core) · Workload: 5h
+Candidate: KM Siam (k.m.siam2019@gmail.com)
+AI Development Platform: Google Antigravity (Gemini 3.8 Flash High)
+================================================================================
+
+[DELIVERABLE LINKS]
+https://flyrank-internship-front-end-ai-engineering.vercel.app/generative-ui
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/lib/tools/promptAuditTool.js
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/components/tools/ToolPartRenderer.jsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/components/tools/PromptScoreCard.jsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/components/tools/ToolErrorCard.jsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/FlyRank_FE07_Tool_Results_GenUI_Report.pdf
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/tests/tools.test.js
+
+[NOTES]
+Completed FE-07 ("Tool results and structured output in the UI") for the Frontend AI Engineering track. Implemented a complete Generative UI architecture rendering typed server-side tool execution, distinct lifecycle states, rich component visualization, and designed error recovery boundaries in Next.js 15 App Router + React 19 + Zod.
+
+Development was directed using Google Antigravity (Powered by Gemini 3.8 Flash High / Advanced Agentic Coding), implementing all core requirements and evaluation criteria:
+
+Key Evaluation Criteria Met:
+1. Tool Defined with Typed Schema: Defined scorePromptEngineering with a strict Zod schema (promptAuditInputSchema) enforcing string length (5–4000 chars), domain taxonomy, and numerical thresholds in src/lib/tools/promptAuditTool.js.
+2. Distinct Four Tool Part States: Master lifecycle component (ToolPartRenderer.jsx) renders distinct visual treatments instead of raw JSON dumps:
+   - input-streaming: Pulsing radar spinner, parameter count, live token telemetry, and shimmering animated skeleton.
+   - input-available: Structured pill inspector displaying validated parameters, domain tag, and thresholds.
+   - output-available: Rich PromptScoreCard component with interactive visualizations.
+   - output-error: Designed ToolErrorCard component with clear remediation and retry button.
+3. Real Component Result Rendering: Instead of raw text/JSON, output-available renders PromptScoreCard with a composite score badge (EXCELLENT, GOOD, MODERATE, NEEDS WORK), dimension bars (Clarity 35%, Specificity 35%, Guardrails 30%), a custom responsive SVG bar chart, actionable remediation checklist, and latency/token FinOps telemetry.
+4. Designed Error State Handling: Tool execution failures trigger a designed error state (ToolErrorCard) showing the specific error code badge (ERR_INSUFFICIENT_CONTEXT), clear remediation guidance, and an interactive "Retry Execution" trigger that safely recovers without crashing.
+5. Documented Tool Contract: README.md explicitly documents the tool contract: Tool Name (scorePromptEngineering), Zod Input Schema, and Output Return Shape.
+6. Interactive Generative UI Demo: Mounted at /generative-ui with dedicated interactive triggers for both the successful tool execution lifecycle and the simulated failure recovery state.
+7. Automated Test Suite: 47/47 tests passing across the repository (6/6 in tests/tools.test.js verifying schema enforcement, return shape contract, error taxonomy, and lifecycle transitions via npm test).
+8. Publication PDF Report: Standalone publication-grade dossier FlyRank_FE07_Tool_Results_GenUI_Report.pdf (202 KB).
+
+[FILES TO UPLOAD]
+- FlyRank_FE07_Tool_Results_GenUI_Report.pdf
+================================================================================

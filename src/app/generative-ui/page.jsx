@@ -1,30 +1,38 @@
 import React from 'react';
+import { ToolLifecycleDemo } from '../../components/tools/ToolLifecycleDemo';
 import { Sparkles, Plane, TrendingUp, CheckCircle, Clock, ShieldCheck, Code2 } from 'lucide-react';
 
 export const metadata = {
-  title: 'Generative UI Sandbox — FlyRank Frontend AI',
-  description: 'Schema-driven dynamic generative UI component rendering from structured AI tool calls.',
+  title: 'Generative UI & Tool Results (FE-07) — FlyRank Frontend AI',
+  description: 'Server-side tool execution with Zod schemas and typed 4-state lifecycle rendering in React.',
 };
 
 export default function GenerativeUIPage() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Header */}
       <div className="border-b border-border pb-5">
         <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-purple-400">
           <Sparkles className="h-4 w-4" />
-          <span>Core Capstone Screen · Screen 2</span>
+          <span>Core Capstone Screen · FE-07 Tool Results & Structured UI</span>
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
-          Generative UI Sandbox
+          Generative UI & Tool Results Sandbox
         </h1>
         <p className="text-sm text-slate-400 mt-1">
-          Demonstrating schema-driven dynamic component synthesis. Structured LLM tool-call payloads are parsed and mapped directly into typed React components.
+          Demonstrating end-to-end server tool execution. Structured tool-call payloads are parsed via Zod schemas and rendered across all 4 distinct lifecycle states (input-streaming, input-available, output-available, output-error).
         </p>
       </div>
 
-      {/* Grid of Dynamic Generative Components */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* FE-07 Primary Deliverable: Interactive Tool Lifecycle State Machine */}
+      <ToolLifecycleDemo />
+
+      {/* Additional Generative Tool Results */}
+      <div>
+        <h2 className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-4">
+          Pre-Configured Structured Tool Output Artifacts
+        </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Dynamic Card 1: Tool Call `displayFlightBooking` */}
         <div className="rounded-xl border border-border bg-[#0f172a] p-6 space-y-4">
           <div className="flex items-center justify-between border-b border-border pb-3">
@@ -120,5 +128,6 @@ export default function GenerativeUIPage() {
         </div>
       </div>
     </div>
+  </div>
   );
 }
