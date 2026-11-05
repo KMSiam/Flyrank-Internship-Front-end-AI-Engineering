@@ -1,0 +1,37 @@
+================================================================================
+FLYRANK INTERNSHIP SUBMISSION — FE-06 BUILD PHASE (CORE)
+Assignment: Streaming AI chat interface (FE-06)
+Track: Frontend AI Engineering · Phase: Build (core) · Workload: 6h
+Candidate: KM Siam (k.m.siam2019@gmail.com)
+AI Development Platform: Google Antigravity (Gemini 3.8 Flash High)
+================================================================================
+
+[DELIVERABLE LINKS]
+https://flyrank-internship-front-end-ai-engineering.vercel.app/chat
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/app/api/chat/route.js
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/components/chat/StreamingChat.jsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/lib/aiConfig.js
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/FlyRank_FE06_Streaming_Chat_Report.pdf
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/tests/streaming.test.js
+
+[NOTES]
+Completed FE-06 ("Streaming AI chat interface") for the Frontend AI Engineering track. Engineered a production-grade, multi-turn conversational streaming interface using Next.js 15 App Router + React 19 + Server-Sent Events (SSE).
+
+Development was directed using Google Antigravity (Powered by Gemini 3.8 Flash High / Advanced Agentic Coding), implementing all core requirements and mentor guidelines:
+
+Key Evaluation Criteria Met:
+1. Token-by-Token Visible Streaming: Server route handler (src/app/api/chat/route.js) emits text/event-stream chunks with realistic 30ms token pacing, rendering smoothly on the client.
+2. State-Based Stop Button: AbortController halts ingestion mid-stream, preserves partial text content, re-enables the prompt input, and permits subsequent conversation turns without corrupting history.
+3. Thinking Indicator Handoff: Pulsing thinking shimmer appears before the first token and transitions seamlessly into streaming text without visual flicker.
+4. User-Aware Auto-Scroll Pinning: Calculates scroll distance from bottom (<80px). Automatically releases pin when the user scrolls up to review prior answers, and displays a floating "Scroll to latest" button.
+5. Centralized Configuration Module: Model configuration and system prompts are encapsulated in a well-commented module (src/lib/aiConfig.js).
+6. Multi-Turn Conversation Persistence: Conversation state persists across turns and survives browser reloads via localStorage.
+7. Server-Side Secret Protection: All third-party API keys live strictly on the server; zero secrets exposed to client bundles.
+8. Mobile Usability: Responsive layout verified at 375px phone width.
+9. Automated Test Suite: 41/41 tests passing across promptcraft, routed skeleton, accessibility, and streaming test suites (npm test).
+10. Publication PDF Report: Standalone technical dossier FlyRank_FE06_Streaming_Chat_Report.pdf.
+
+[FILES TO UPLOAD]
+- FlyRank_FE06_Streaming_Chat_Report.pdf
+================================================================================

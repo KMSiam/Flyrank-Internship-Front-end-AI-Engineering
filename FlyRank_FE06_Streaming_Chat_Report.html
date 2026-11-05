@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FlyRank FE-06: Streaming AI Chat Interface — Engineering Publication Report</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 16mm 14mm 16mm 14mm;
+    }
+    :root {
+      --primary: #0f172a;
+      --secondary: #1e293b;
+      --accent: #0284c7;
+      --accent-green: #10b981;
+      --accent-purple: #7c3aed;
+      --accent-amber: #d97706;
+      --accent-rose: #f43f5e;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --bg-light: #f8fafc;
+      --border: #cbd5e1;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      color: var(--text-main);
+      background: #ffffff;
+      line-height: 1.45;
+      font-size: 9.5pt;
+    }
+    .page-break { page-break-after: always; }
+
+    /* Header Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, #090d16 0%, #1e293b 100%);
+      color: #ffffff;
+      padding: 24px 20px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      border-left: 6px solid #0284c7;
+    }
+    .tagline {
+      font-size: 8.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #38bdf8;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .hero-banner h1 {
+      font-size: 18pt;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .hero-subtitle {
+      font-size: 10pt;
+      color: #cbd5e1;
+      max-width: 95%;
+      margin-bottom: 12px;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 8pt;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .meta-item strong { display: block; color: #f8fafc; font-size: 9pt; }
+    .meta-item span { color: #94a3b8; font-size: 7pt; text-transform: uppercase; }
+
+    /* Headings */
+    h2 {
+      font-size: 11.5pt;
+      font-weight: 800;
+      color: var(--primary);
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 4px;
+      margin-top: 14px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 13px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    h3 {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+    p { margin-bottom: 6px; color: #334155; text-align: justify; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 12px 0;
+      font-size: 8pt;
+    }
+    th {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 6px 8px;
+      text-align: left;
+      font-weight: 600;
+      border: 1px solid #0f172a;
+    }
+    td {
+      padding: 5px 8px;
+      border: 1px solid #e2e8f0;
+      vertical-align: top;
+      color: #1e293b;
+    }
+    tr:nth-child(even) td { background: #f8fafc; }
+
+    /* Code & Callouts */
+    pre, code {
+      font-family: "JetBrains Mono", Consolas, Menlo, monospace;
+      font-size: 7.5pt;
+    }
+    code {
+      background: #f1f5f9;
+      color: #0f172a;
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+    pre {
+      background: #090d16;
+      color: #f8fafc;
+      padding: 8px 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 6px 0 10px 0;
+      border: 1px solid #1e293b;
+      line-height: 1.4;
+    }
+    .badge {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 7pt;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .badge-pass { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    .badge-info { background: #e0f2fe; color: #075985; border: 1px solid #bae6fd; }
+    .callout {
+      background: #f0fdf4;
+      border-left: 4px solid var(--accent-green);
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin: 8px 0;
+      font-size: 8.5pt;
+      color: #166534;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 8px 0;
+    }
+    .card {
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 10px;
+      background: #ffffff;
+    }
+    .card-title {
+      font-weight: 700;
+      color: #0f172a;
+      font-size: 8.5pt;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .footer-note {
+      margin-top: 14px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 7.5pt;
+      color: #64748b;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO BANNER -->
+  <div class="hero-banner">
+    <div class="tagline">FlyRank Internship · Frontend AI Engineering Track · Build Phase (Core)</div>
+    <h1>FE-06: Streaming AI Chat Interface</h1>
+    <div class="hero-subtitle">
+      Production Architecture: Server-Sent Events (SSE) Route Handler, Centralized Model Configuration, Flicker-Free Thinking Shimmer Handoff, State-Preserving Stop Button, and User-Aware Auto-Scroll Pinning.
+    </div>
+    <div class="meta-grid">
+      <div class="meta-item"><span>Candidate</span><strong>KM Siam</strong></div>
+      <div class="meta-item"><span>Assignment Code</span><strong>FE-06 (Week 4)</strong></div>
+      <div class="meta-item"><span>AI Development Engine</span><strong>Google Antigravity</strong></div>
+      <div class="meta-item"><span>Assigned Workload</span><strong>6 Hours · Core Build</strong></div>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <h2>1. Executive Summary: The Defining UI Pattern of 2026</h2>
+  <p>
+    Token-by-token streaming conversation is the defining user interface paradigm of the modern AI era. <strong>FE-06</strong> delivers a hardened, production-grade streaming AI chat interface built on Next.js 15 App Router, React 19, and Tailwind CSS.
+  </p>
+  <p>
+    The system decouples server-side inference governance from client-side reactive rendering:
+  </p>
+  <ul style="font-size: 8pt; color: #334155; margin-left: 16px; margin-bottom: 8px;">
+    <li><strong>Server-Side Route Handler (<code>src/app/api/chat/route.js</code>):</strong> Communicates via Server-Sent Events (SSE) emitting <code>text-delta</code> frames, while keeping API credentials strictly server-side.</li>
+    <li><strong>Centralized Model Config (<code>src/lib/aiConfig.js</code>):</strong> Encapsulates system prompts, model parameters (Claude 3.7 Sonnet, Gemini 3.8 Flash High, GPT-4o), and deterministic streaming fallbacks.</li>
+    <li><strong>Client Streaming UI (<code>src/components/chat/StreamingChat.jsx</code>):</strong> Features thinking indicator handoff, abort control with partial message retention, intelligent auto-scroll, and multi-turn <code>localStorage</code> persistence.</li>
+  </ul>
+
+  <!-- SECTION 2 -->
+  <h2>2. Architecture & Mentor Invariants Verification</h2>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">1. The Thinking Indicator Handoff</div>
+      <p style="font-size: 7.8pt;">
+        Before the first token arrives, a pulsing shimmer indicates active synthesis. When the first SSE chunk arrives, the UI executes a seamless state handoff (transitioning status from <code>'thinking'</code> to <code>'streaming'</code>) without unmounting the message container, eliminating visual flicker.
+      </p>
+    </div>
+    <div class="card">
+      <div class="card-title">2. State-Based Stop Button</div>
+      <p style="font-size: 7.8pt;">
+        Aborting is treated as a state machine transition, not a cosmetic UI toggle. Clicking "Stop" fires <code>AbortController.abort()</code>, halts stream ingestion, preserves whatever partial tokens were received, re-enables the input prompt field, and permits immediate subsequent user turns.
+      </p>
+    </div>
+    <div class="card">
+      <div class="card-title">3. Resilient User-Aware Auto-Scroll</div>
+      <p style="font-size: 7.8pt;">
+        The chat container maintains an active pin (<code>scrollHeight - scrollTop - clientHeight &lt; 80px</code>). The moment a user scrolls up to review prior answers, the auto-scroll lock is released, and a floating "Scroll to latest" button appears, preventing disruptive jumping.
+      </p>
+    </div>
+    <div class="card">
+      <div class="card-title">4. Multi-Turn History Persistence</div>
+      <p style="font-size: 7.8pt;">
+        Conversations persist to <code>localStorage</code> (<code>flyrank_streaming_chat_history_v1</code>). A browser reload or accidental tab closure restores the full conversational thread with intact token metrics.
+      </p>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- SECTION 3 -->
+  <h2>3. Server Route Handler & Protocol Specification (SSE)</h2>
+  <pre>
+POST /api/chat HTTP/1.1
+Host: flyrank-internship-front-end-ai-engineering.vercel.app
+Content-Type: application/json
+
+{
+  "messages": [
+    { "role": "user", "content": "Explain streaming chat architecture" }
+  ],
+  "model": "claude-3-7-sonnet"
+}
+
+HTTP/1.1 200 OK
+Content-Type: text/event-stream; charset=utf-8
+Cache-Control: no-cache, no-transform
+Connection: keep-alive
+
+data: {"type":"text-delta","text":"### Analysis"}
+
+data: {"type":"text-delta","text":" & Architectural"}
+
+data: {"type":"text-delta","text":" Breakdown"}
+
+data: {"type":"finish","finishReason":"stop"}
+
+data: [DONE]
+  </pre>
+
+  <!-- SECTION 4 -->
+  <h2>4. Centralized Model Configuration Module (<code>src/lib/aiConfig.js</code>)</h2>
+  <pre>
+export const MODEL_CONFIG = {
+  provider: 'anthropic',
+  defaultModel: 'claude-3-7-sonnet',
+  supportedModels: [
+    { id: 'claude-3-7-sonnet', name: 'Claude 3.7 Sonnet (Anthropic)', tokensPerSec: 42 },
+    { id: 'gemini-3.8-flash', name: 'Gemini 3.8 Flash High (Google)', tokensPerSec: 68 },
+    { id: 'gpt-4o', name: 'GPT-4o (OpenAI)', tokensPerSec: 38 }
+  ],
+  temperature: 0.7,
+  maxOutputTokens: 2048,
+  topP: 0.95
+};
+  </pre>
+
+  <!-- SECTION 5 -->
+  <h2>5. Comprehensive Automated Verification Suite (41/41 Passed)</h2>
+  <pre>
+$ npm test
+
+> flyrank-internship-front-end-ai-engineering@1.0.0 test
+> node tests/promptcraft.test.js && node tests/routes.test.js && node tests/accessibility.test.js && node tests/streaming.test.js
+
+🧪 PromptCraft Suite: 10/10 passed
+🧪 Routes & Skeleton Suite: 14/14 passed
+🧪 Accessible Components Suite: 10/10 passed
+
+🧪 Starting FE-06 Streaming AI Chat Interface Automated Test Suite...
+
+--- 1. Centralized System Prompt & Model Configuration ---
+  ✅ PASS: aiConfig.js exports SYSTEM_PROMPT with high-signal guidelines
+  ✅ PASS: aiConfig.js exports MODEL_CONFIG with Claude, Gemini, and GPT options
+  ✅ PASS: getSimulatedResponse returns non-empty structured response
+
+--- 2. Server-Side Streaming Route Handler (POST /api/chat) ---
+  ✅ PASS: POST /api/chat returns HTTP 200 with text/event-stream content type
+  ✅ PASS: Streaming route delivers text-delta SSE chunks and finishes cleanly
+  ✅ PASS: Streaming route respects AbortController signal without throwing
+
+--- 3. Client Component Architecture & Mentor Invariants ---
+  ✅ PASS: StreamingChat.jsx implements thinking indicator, stop button, auto-scroll, and persistence
+
+==========================================
+Summary: 7/7 FE-06 tests passed · Total Suite: 41/41 passed (100%)
+==========================================
+
+$ npm run build
+> next build
+   ▲ Next.js 15.5.29
+ ✓ Compiled successfully in 4.5s
+ ✓ Generating static pages (14/14)
+   ├ ƒ /api/chat
+   ├ ○ /chat
+  </pre>
+
+  <!-- FOOTER -->
+  <div class="footer-note">
+    <span>FlyRank Frontend AI Engineering · FE-06 Assignment Deliverable</span>
+    <span>Candidate: KM Siam (k.m.siam2019@gmail.com) · Southeast University</span>
+    <span>Engine: Google Antigravity (Gemini 3.8 Flash High)</span>
+  </div>
+
+</body>
+</html>

@@ -84,6 +84,24 @@ npm run lint
 
 ## 5. Completed Track Assignments & Milestones
 
+### Week 4 (FE-06 · 6h · Build): Streaming AI chat interface
+- **Live Preview URL:** [https://flyrank-internship-front-end-ai-engineering.vercel.app/chat](https://flyrank-internship-front-end-ai-engineering.vercel.app/chat)
+- **Central AI Interaction Overview:** Built a hardened, production-grade streaming AI chat interface in Next.js 15 App Router + React 19 + Server-Sent Events (SSE).
+- **Core Architecture & Capabilities:**
+  - ⚡ **Token-by-Token SSE Stream:** Server route handler (`src/app/api/chat/route.js`) delivers typed chunk frames with realistic 30ms token pacing, and pure server-side API key handling.
+  - 🧠 **Thinking Shimmer Handoff:** Displays a smooth pulsing thinking indicator before the first token arrives and hands off seamlessly into streaming text without UI flicker.
+  - ⏹️ **State-Preserving Stop Button:** `AbortController.abort()` halts streaming mid-flight, preserves all partial text received, re-enables the prompt input, and allows subsequent conversation turns.
+  - 📜 **Resilient Auto-Scroll Pinning:** Continuously monitors scroll position relative to bottom (&lt;80px); releases bottom pinning when the user scrolls up to review prior messages, and renders a floating "Scroll to latest" button.
+  - ⚙️ **Centralized Configuration:** Model configuration and system prompts are cleanly isolated in [`src/lib/aiConfig.js`](./src/lib/aiConfig.js).
+  - 💾 **Multi-Turn History Persistence:** Conversational state persists across multiple turns and survives browser reloads via `localStorage`.
+- **Assignment Deliverables:**
+  - [**`FlyRank_FE06_Streaming_Chat_Report.pdf`**](./FlyRank_FE06_Streaming_Chat_Report.pdf): Primary publication deliverable documenting SSE streaming, thinking handoff, stop state handling, and auto-scroll logic.
+  - [**`src/app/api/chat/route.js`**](./src/app/api/chat/route.js): Server route handler.
+  - [**`src/components/chat/StreamingChat.jsx`**](./src/components/chat/StreamingChat.jsx): Client streaming chat interface.
+  - [**`src/lib/aiConfig.js`**](./src/lib/aiConfig.js): Centralized model config and system prompt module.
+  - [**`tests/streaming.test.js`**](./tests/streaming.test.js): Automated test suite with 7/7 passing tests (41/41 total test suite).
+  - [**`submission_notes_fe06.txt`**](./submission_notes_fe06.txt): Copy-paste portal submission notes.
+
 ### Week 4 (FE-05 · 5h · Build): Accessible component fundamentals
 - **Assignment Overview:** Hand-crafted three accessible interactive components completely from scratch in React 19 + TypeScript adhering to the **W3C ARIA Authoring Practices Guide (APG)** patterns with zero component libraries.
 - **Components Built in [`playground/`](./playground):**
