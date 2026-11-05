@@ -11,10 +11,11 @@
     "build:vite": "vite build",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "test": "node tests/promptcraft.test.js && node tests/routes.test.js",
+    "test": "node tests/promptcraft.test.js && node tests/routes.test.js && node tests/accessibility.test.js",
     "test:round2": "node src/round2_runner.js",
     "test:app": "node tests/promptcraft.test.js",
-    "test:routes": "node tests/routes.test.js"
+    "test:routes": "node tests/routes.test.js",
+    "test:a11y": "node tests/accessibility.test.js"
   },
   "keywords": [
     "frontend-ai",
@@ -46,7 +47,11 @@
     "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.2.1",
+    "typescript": "^5.9.3",
     "vite": "^8.3.6"
   }
 }
