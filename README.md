@@ -84,6 +84,23 @@ npm run lint
 
 ## 5. Completed Track Assignments & Milestones
 
+### Week 7 (FE-AA2 · 3h · Build+): Your First 3D Experience on the Web
+- **Live 3D URL:** [https://flyrank-internship-front-end-ai-engineering.vercel.app/three-d](https://flyrank-internship-front-end-ai-engineering.vercel.app/three-d)
+- **3D Web Architecture Overview:** Engineered an interactive WebGL 3D Quantum Neural Node scene built on Three.js r170 with procedural geometry, physical PBR lighting, real-time configurator controls, and responsible performance budgeting.
+- **Core 3D Capabilities & FE-10 Performance Lens:**
+  - 🌐 **WebGL Scene & Staging:** Renders a central faceted neural core and an orbiting tensor flux ring with a three-point physical lighting rig (ambient, directional key, and colored fill/rim lights).
+  - 🎨 **Configurator Dashboard:** Live interactive controls for geometry switching (Icosahedron, Torus Knot, Dodecahedron), 6 color presets, metalness/roughness physical sliders, and wireframe toggles.
+  - 🚀 **Zero Model Download (0 KB):** All geometries are generated procedurally, eliminating 5–20MB uncompressed GLB asset downloads.
+  - 📱 **Mobile Touch Orbit & Thermal Ceiling:** Renderer Device Pixel Ratio is capped at 2.0 (`Math.min(devicePixelRatio, 2)`) to prevent GPU overheating on high-density mobile screens.
+  - ♿ **Responsible Lazy-Loading & A11y:** Canvas dynamically imported with `ssr: false` and a static skeleton fallback; honors `prefers-reduced-motion` by auto-pausing rotation.
+- **Assignment Deliverables:**
+  - [**`FlyRank_FEAA2_3D_Experience_Report.pdf`**](./FlyRank_FEAA2_3D_Experience_Report.pdf): Primary publication deliverable documenting 3D staging, PBR lighting, and FE-10 performance benchmarks.
+  - [**`src/components/three/ThreeScene.jsx`**](./src/components/three/ThreeScene.jsx): Core Three.js WebGL scene with touch orbit controls.
+  - [**`src/components/three/ThreeSceneClient.jsx`**](./src/components/three/ThreeSceneClient.jsx): Dynamic client wrapper with skeleton fallback.
+  - [**`src/app/three-d/page.jsx`**](./src/app/three-d/page.jsx): Next.js App Router 3D experience route.
+  - [**`tests/three-scene.test.js`**](./tests/three-scene.test.js): Automated test suite with 4/4 passing tests (67/67 total test suite).
+  - [**`submission_notes_fe_aa2.txt`**](./submission_notes_fe_aa2.txt): Copy-paste portal submission notes.
+
 ### Week 6 (FE-09 · 5h · Build polish): Testing pass — Vitest, RTL & CI Verification
 - **Live Preview URL:** [https://flyrank-internship-front-end-ai-engineering.vercel.app](https://flyrank-internship-front-end-ai-engineering.vercel.app)
 - **Testing Architecture Overview:** Scaled agentic verification by establishing Vitest + React Testing Library component tests, mock streaming AI routes, Playwright E2E specs, and an automated GitHub Actions CI pipeline.

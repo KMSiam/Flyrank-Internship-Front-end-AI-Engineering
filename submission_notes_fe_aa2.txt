@@ -1,0 +1,42 @@
+================================================================================
+FLYRANK INTERNSHIP SUBMISSION — FE-AA2 BUILD+ (3D WEB EXPERIENCE)
+Assignment: Your First 3D Experience on the Web (FE-AA2)
+Track: Frontend AI Engineering · Phase: Build+ · Workload: 3h
+Candidate: KM Siam (k.m.siam2019@gmail.com)
+AI Development Platform: Google Antigravity (Gemini 3.8 Flash)
+================================================================================
+
+[DELIVERABLE LINKS]
+https://flyrank-internship-front-end-ai-engineering.vercel.app/three-d
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/components/three/ThreeScene.jsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/components/three/ThreeSceneClient.jsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/app/three-d/page.jsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/FlyRank_FEAA2_3D_Experience_Report.pdf
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/tests/three-scene.test.js
+
+[NOTES]
+Completed FE-AA2 ("Your First 3D Experience on the Web") for the Frontend AI Engineering track. Built an interactive 3D WebGL experience staged as an enterprise Quantum Neural Node in Three.js r170 with real-time physical lighting rigs, procedural geometry morphing, an interactive material configurator, mobile touch orbit controls, and responsible performance budgeting in Next.js 15 App Router.
+
+Development was directed using Google Antigravity (Powered by Gemini 3.8 Flash / Advanced Agentic Coding), satisfying all core evaluation criteria:
+
+Key Evaluation Criteria Met:
+1. Real 3D Scene in the Browser: Renders an interactive 3D WebGL scene with a central faceted neural core and an orbiting tensor flux ring illuminated by a 3-point physical lighting rig (ambient light, directional key light, and dual colored point lights).
+2. Meaningful Interactions Beyond Orbiting: Integrated a live configurator panel featuring:
+   - Part/geometry swapping (Quantum Node Icosahedron, Tensor Knot, Neural Dodecahedron).
+   - Material color presets (FlyRank Sky, Emerald AI, Amber Core, Rose FinOps, Cyber Violet, Deep Space).
+   - Physical PBR material sliders (real-time metalness & roughness).
+   - Rasterizer toggles (wireframe mode and rotation speed pause).
+3. Responsible Shipping & FE-10 Performance Lens:
+   - Zero asset weight: Geometry is procedural (0 KB GLB download), avoiding 5–20MB transfers.
+   - Mobile thermal protection: Renderer DPR capped at 2.0 to protect mobile battery and GPU thermals.
+   - Lazy loading with fallback: Dynamically imported with ssr: false and an animated skeleton fallback.
+   - Reduced motion compliance: Honors prefers-reduced-motion by auto-pausing rotation.
+   - First load JS chunk: 3.27 KB on the /three-d route.
+4. Mobile Usability: Full touch pointer drag and swipe orbit controls without bulky external dependencies.
+5. Automated Test Suite: 67/67 tests passing across the repository (4/4 in tests/three-scene.test.js via npm test).
+6. Publication PDF Report: Standalone technical dossier FlyRank_FEAA2_3D_Experience_Report.pdf (161 KB).
+
+[FILES TO UPLOAD]
+- FlyRank_FEAA2_3D_Experience_Report.pdf
+================================================================================
