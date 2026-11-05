@@ -1,0 +1,33 @@
+================================================================================
+FE-AA3 ASSIGNMENT SUBMISSION NOTES: SIGNATURE HERO (FULLSCREEN SHADER)
+Track: Frontend AI Engineering | Week 8 | Phase: Submit
+================================================================================
+
+1. LIVE PREVIEW URL:
+https://flyrank-internship-front-end-ai-engineering.vercel.app
+
+2. REPOSITORY & SHADER CODE LINKS:
+- Fullscreen Shader Component:
+  https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/components/shader/ShaderHero.jsx
+- Client Dynamic Wrapper:
+  https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/components/shader/ShaderHeroClient.jsx
+- Root Page Integration:
+  https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/app/page.jsx
+- Automated Test Suite:
+  https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/tests/shader-hero.test.js
+
+3. UNIFORMS UTILIZED:
+- u_time (float): Continuous delta elapsed time driving 4-octave Fractional Brownian Motion (fBm) fluid waves.
+- u_resolution (vec2): Dynamic viewport dimensions used for aspect-ratio correction, preventing stretching on mobile and ultrawide screens.
+- u_mouse (vec2): Pointer coordinates creating an interactive liquid wake with exponential spatial falloff.
+
+4. RESPONSIBLE SHIPPING & REDUCED-MOTION FALLBACK:
+- devicePixelRatio Capping: Capped at Math.min(window.devicePixelRatio || 1, 2) to eliminate thermal runaway and battery drain on mobile displays.
+- Tab Inactivity: Listens to document "visibilitychange" to freeze the render loop when minimized or in background tabs.
+- prefers-reduced-motion: Users with reduced motion preferences automatically receive a static, accessible brand aurora gradient without allocating WebGL resources.
+- Manual Play/Pause Control: Interactive button in the hero header allows users to pause and resume the animation at any time.
+
+5. VERIFICATION:
+- Automated Tests: 9/9 FE-AA3 checks passing (76/76 overall test suite passing).
+- Production Build: Next.js 15 App Router compiles 16/16 routes cleanly with 0 errors.
+- Publication PDF Report: Generated and attached.

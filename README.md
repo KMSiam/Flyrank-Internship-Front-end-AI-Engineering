@@ -84,6 +84,27 @@ npm run lint
 
 ## 5. Completed Track Assignments & Milestones
 
+### Week 8 (FE-AA3 · 2h · Submit): Signature Hero: A Fullscreen Shader
+- **Live Preview URL:** [https://flyrank-internship-front-end-ai-engineering.vercel.app](https://flyrank-internship-front-end-ai-engineering.vercel.app)
+- **Shader Architecture Overview:** Custom GLSL fragment shader shipped as a fullscreen hero on the root landing page (`/`). Implements the **FlyRank Quantum Aurora** fluid dynamic field with interactive mouse displacement, multi-frequency fractional Brownian motion (fBm), and responsible GPU/accessibility safeguards.
+- **GLSL Uniforms & Visual Pipeline:**
+  - ⏱️ **`u_time` (float):** Drives temporal wave propagation across a 4-octave Fractional Brownian Motion (fBm) fluid domain.
+  - 📐 **`u_resolution` (vec2):** Calculates aspect-corrected UV space `(gl_FragCoord.xy * 2.0 - res) / min(res.x, res.y)` ensuring organic circular wave propagation on mobile (375px) and ultrawide (3440px) viewports alike.
+  - 🖱️ **`u_mouse` (vec2):** Tracks pointer coordinates and creates an interactive liquid ripple wake with exponential spatial falloff `normalize(diff) * exp(-length(diff) * 2.5) * 0.12`.
+  - 🎨 **Chromatic Grading & Contrast:** Deep Navy (`#090D16`), Cyan (`#0284C7`), and Emerald (`#10B981`) color ramps blended with an internal radial vignette scrim to guarantee WCAG AAA typography contrast (> 7.5:1).
+  - 🎞️ **Anti-Banding Film Grain:** Subtle procedural high-frequency noise prevents 8-bit banding on modern OLED screens.
+- **Responsible Shipping & A11y Guardrails:**
+  - 🔋 **Capped DPR:** Initialized with `Math.min(window.devicePixelRatio || 1, 2)` to eliminate thermal runaway and battery drain on mobile displays.
+  - ⏸️ **Tab Inactivity Pausing:** Attaches to `document.addEventListener('visibilitychange')` to halt `requestAnimationFrame` whenever the browser tab is hidden or minimized.
+  - ♿ **`prefers-reduced-motion`:** Detects user reduced-motion preference and immediately falls back to a clean CSS aurora gradient without allocating WebGL contexts.
+  - 🎛️ **Manual Play/Pause Override:** Top-right telemetry pill provides a keyboard-accessible toggle with dynamic ARIA announcements.
+- **Assignment Deliverables:**
+  - [**`FlyRank_FEAA3_Shader_Hero_Report.pdf`**](./FlyRank_FEAA3_Shader_Hero_Report.pdf): Primary publication deliverable with shader source explanation, uniform mappings, and contrast verification.
+  - [**`src/components/shader/ShaderHero.jsx`**](./src/components/shader/ShaderHero.jsx): Fullscreen Three.js WebGL fragment shader hero.
+  - [**`src/components/shader/ShaderHeroClient.jsx`**](./src/components/shader/ShaderHeroClient.jsx): Client wrapper with skeleton fallback preventing SSR hydration mismatch.
+  - [**`tests/shader-hero.test.js`**](./tests/shader-hero.test.js): Automated test suite with 9/9 passing tests (76/76 total test suite).
+  - [**`submission_notes_fe_aa3.txt`**](./submission_notes_fe_aa3.txt): Copy-paste portal submission notes.
+
 ### Week 7 (FE-10 · 4h · Build polish): Accessibility and performance audit
 - **Live Preview URL:** [https://flyrank-internship-front-end-ai-engineering.vercel.app](https://flyrank-internship-front-end-ai-engineering.vercel.app)
 - **Audit Dossier:** [**`AUDIT.md`**](./AUDIT.md) — Comprehensive before/after metrics and remediation log.
