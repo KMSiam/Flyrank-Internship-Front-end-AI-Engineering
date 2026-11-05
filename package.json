@@ -5,14 +5,16 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "build:vite": "vite build",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "test": "node tests/promptcraft.test.js",
+    "test": "node tests/promptcraft.test.js && node tests/routes.test.js",
     "test:round2": "node src/round2_runner.js",
-    "test:app": "node tests/promptcraft.test.js"
+    "test:app": "node tests/promptcraft.test.js",
+    "test:routes": "node tests/routes.test.js"
   },
   "keywords": [
     "frontend-ai",
@@ -21,8 +23,9 @@
     "gemini",
     "claude-code",
     "cursor",
+    "nextjs",
     "react",
-    "vite",
+    "tailwind",
     "prompt-engineering",
     "conventional-commits"
   ],
@@ -30,10 +33,16 @@
   "license": "MIT",
   "dependencies": {
     "@hookform/resolvers": "^7.0.3",
+    "autoprefixer": "^10.6.2",
+    "clsx": "^2.1.1",
     "lucide-react": "^1.69.0",
+    "next": "^15.5.0",
+    "postcss": "^8.5.3",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-hook-form": "^7.91.0",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^3.4.17",
     "zod": "^4.6.7"
   },
   "devDependencies": {
