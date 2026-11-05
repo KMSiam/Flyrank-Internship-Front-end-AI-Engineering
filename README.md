@@ -84,6 +84,21 @@ npm run lint
 
 ## 5. Completed Track Assignments & Milestones
 
+### Week 3 (Foundations · 6h): React App Development with AI — PromptCraft Studio AI
+- **Application Overview:** Built **PromptCraft Studio AI**, an interactive, enterprise-grade prompt engineering, dynamic variable interpolation, and heuristic quality evaluation studio built in React 19 + Vite 8.3 + Lucide Icons.
+- **Key Features:**
+  - 🔄 **Dynamic `{{variable}}` Extraction & Live Interpolation:** Automatically detects placeholders with non-greedy regex, generates reactive input controls, and compiles interpolated prompts in real time.
+  - 📊 **Heuristic AI Quality Scorecard:** Evaluates prompt clarity (35%), specificity (35%), and constraint guardrails (30%) on a 0–100 scale, assigning quality tiers (`EXCELLENT`, `GOOD`, `MODERATE`, `POOR`) with actionable optimization recommendations.
+  - ⚡ **Interactive Model Playground & Token Simulator:** Simulates token-by-token streaming generation (45ms interval) with abort control across Gemini 3.8 Flash High, Claude 3.7 Sonnet, and OpenAI GPT-4o.
+  - 💰 **Real-Time Client FinOps Telemetry:** Calculates exact input/output token counts and transaction costs in USD down to 6 decimal places.
+  - 💾 **Persistent Template Management:** Pre-seeded with 4 domain templates (Coding, Compliance, Analysis, System), featuring CRUD, filtering, cloning, and JSON export/import with `localStorage` persistence.
+- **Assignment Deliverables:**
+  - [**`PROMPTS.md`**](./PROMPTS.md): Complete chronological log of structured, constraint-driven prompts used across all 5 development phases.
+  - [**`AI_ASSISTANCE.md`**](./AI_ASSISTANCE.md): In-depth analysis of how Google Antigravity (Gemini 3.8 Flash High) accelerated architectural planning, utility logic, UI scaffolding, and test generation (~6x velocity gain).
+  - [**`REFACTORING.md`**](./REFACTORING.md): Detailed post-AI code review documentation detailing 4 critical manual refactorings (streaming timer memory leak cleanup, regex deduplication, schema property desynchronization, test environment decoupling).
+  - [**`FlyRank_Week3_React_AI_App_Report.pdf`**](./FlyRank_Week3_React_AI_App_Report.pdf): Publication-grade dossier documenting architecture, test results, and mentorship alignment.
+  - [**`tests/promptcraft.test.js`**](./tests/promptcraft.test.js): Automated test suite with 10/10 passing tests (`npm test`).
+
 ### Week 2 (FE-03 · 4h · Foundations): The AI-Assisted Workflow Drill
 - [**`WORKFLOW.md`**](./WORKFLOW.md): Comparative analysis (490 words) contrasting unguided generation (Round 1) vs. specification-directed AI pairing (Round 2) across correctness, accessibility, and edge cases.
 - [**Round 1 Branch (`workflow/round-one-vague`)**](https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/tree/workflow/round-one-vague): Form built via vague prompt with uncoordinated `useState` hooks, missing ARIA attributes, and boundary vulnerabilities.

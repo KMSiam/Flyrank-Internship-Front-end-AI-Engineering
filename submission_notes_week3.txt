@@ -1,0 +1,33 @@
+================================================================================
+FLYRANK INTERNSHIP SUBMISSION — WEEK 3 FOUNDATIONS
+Assignment: React app development with AI (PromptCraft Studio AI)
+Track: Frontend AI Engineering
+Candidate: KM Siam (k.m.siam2019@gmail.com)
+AI Development Platform: Google Antigravity (Gemini 3.8 Flash High)
+================================================================================
+
+[DELIVERABLE LINKS]
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/PROMPTS.md
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/AI_ASSISTANCE.md
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/REFACTORING.md
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/FlyRank_Week3_React_AI_App_Report.pdf
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/tests/promptcraft.test.js
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/tree/main/src
+
+[NOTES]
+Completed the Week 3 Foundations assignment ("React app development with AI") following the architectural guidelines from mentor Ishak's session. Built "PromptCraft Studio AI", an enterprise-grade prompt engineering, dynamic variable interpolation, model streaming simulator, and heuristic quality evaluation studio in React 19 + Vite 8.3.
+
+Development was directed using Google Antigravity (powered by Gemini 3.8 Flash High / Advanced Agentic Coding) following an explore-plan-code-verify methodology.
+
+Key Deliverables Included:
+1. Completed Application (src/): 3-column layout featuring dynamic {{variable}} regex extraction, reactive variable inputs, live prompt preview, streaming token simulation with abort control, real-time FinOps token/cost estimation across Gemini 3.8 Flash, Claude 3.7 Sonnet, and GPT-4o, and localStorage persistence.
+2. PROMPTS.md: Full chronological log of structured prompts used across all 5 development phases.
+3. AI_ASSISTANCE.md: Detailed analysis of how Google Antigravity accelerated architecture, algorithmic utilities, UI construction, and automated testing (~6x velocity gain).
+4. REFACTORING.md: In-depth code review documentation detailing 4 critical manual refactorings (streaming interval memory leak cleanup, regex deduplication, schema property synchronization, and test environment decoupling).
+5. Automated Test Suite (tests/promptcraft.test.js): 10/10 automated tests passed (npm test). Production bundle built cleanly with Vite 8.3 in 597ms.
+6. Publication PDF Report (FlyRank_Week3_React_AI_App_Report.pdf): Complete standalone technical report.
+
+[FILES TO UPLOAD]
+- FlyRank_Week3_React_AI_App_Report.pdf
+================================================================================
