@@ -11,11 +11,12 @@
     "build:vite": "vite build",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "test": "node tests/promptcraft.test.js && node tests/routes.test.js && node tests/accessibility.test.js",
+    "test": "node tests/promptcraft.test.js && node tests/routes.test.js && node tests/accessibility.test.js && node tests/streaming.test.js",
     "test:round2": "node src/round2_runner.js",
     "test:app": "node tests/promptcraft.test.js",
     "test:routes": "node tests/routes.test.js",
-    "test:a11y": "node tests/accessibility.test.js"
+    "test:a11y": "node tests/accessibility.test.js",
+    "test:stream": "node tests/streaming.test.js"
   },
   "keywords": [
     "frontend-ai",
