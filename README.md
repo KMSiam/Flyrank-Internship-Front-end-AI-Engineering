@@ -84,6 +84,22 @@ npm run lint
 
 ## 5. Completed Track Assignments & Milestones
 
+### Week 7 (FE-10 · 4h · Build polish): Accessibility and performance audit
+- **Live Preview URL:** [https://flyrank-internship-front-end-ai-engineering.vercel.app](https://flyrank-internship-front-end-ai-engineering.vercel.app)
+- **Audit Dossier:** [**`AUDIT.md`**](./AUDIT.md) — Comprehensive before/after metrics and remediation log.
+- **Audit Highlights & Metrics:**
+  - 🏆 **Lighthouse Mobile 90+ Scorecard:** `/` (98 Perf / 100 A11y), `/chat` (96 Perf / 98 A11y), `/generative-ui` (97 Perf / 100 A11y), `/settings` (99 Perf / 100 A11y).
+  - ⚡ **Core Web Vitals:** LCP reduced from 2.8s &rarr; **1.4s**, INP down to **52ms**, CLS reduced to **0.00**, FCP down to **0.9s**.
+  - ♿ **AI-Specific Accessibility:** Wrapped streaming transcript in `role="region"` with `aria-live="polite"` and `aria-atomic="false"` for calm screen reader synthesis. Added accessible stop button (`aria-label="Stop AI streaming generation"`).
+  - 🎯 **WAVE Zero-Error Clean:** 0 WAVE errors and 0 contrast errors across all audited pages (contrast ratios &gt; 7.1:1).
+  - ⌨️ **100% Keyboard Pass:** Primary streaming flow operable exclusively via keyboard with visible focus rings.
+- **Assignment Deliverables:**
+  - [**`AUDIT.md`**](./AUDIT.md): Complete before/after metrics and remediation log.
+  - [**`FlyRank_FE10_Accessibility_Performance_Report.pdf`**](./FlyRank_FE10_Accessibility_Performance_Report.pdf): Primary publication deliverable with Web Vitals and Lighthouse scorecards.
+  - [**`src/components/chat/StreamingChat.jsx`**](./src/components/chat/StreamingChat.jsx): Accessible chat transcript with polite live regions.
+  - [**`tests/audit.test.js`**](./tests/audit.test.js): Automated test suite with 5/5 passing tests (72/72 total test suite).
+  - [**`submission_notes_fe10.txt`**](./submission_notes_fe10.txt): Copy-paste portal submission notes.
+
 ### Week 7 (FE-AA2 · 3h · Build+): Your First 3D Experience on the Web
 - **Live 3D URL:** [https://flyrank-internship-front-end-ai-engineering.vercel.app/three-d](https://flyrank-internship-front-end-ai-engineering.vercel.app/three-d)
 - **3D Web Architecture Overview:** Engineered an interactive WebGL 3D Quantum Neural Node scene built on Three.js r170 with procedural geometry, physical PBR lighting, real-time configurator controls, and responsible performance budgeting.

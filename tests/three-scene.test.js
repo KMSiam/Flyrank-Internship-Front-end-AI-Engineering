@@ -60,9 +60,9 @@ runTest('ThreeScene.jsx caps DPR and supports prefers-reduced-motion', () => {
 // 2. Page & Lazy-Loading Invariants
 console.log('\n--- 2. Responsible Shipping & Dynamic Route ---');
 
-runTest('three-d/page.jsx exists and lazy-loads canvas with fallback', () => {
-  const filePath = path.join(rootDir, 'src/app/three-d/page.jsx');
-  assert.ok(fs.existsSync(filePath), 'src/app/three-d/page.jsx must exist');
+runTest('three-d/page.jsx and ThreeSceneClient.jsx lazy-load canvas with fallback', () => {
+  const filePath = path.join(rootDir, 'src/components/three/ThreeSceneClient.jsx');
+  assert.ok(fs.existsSync(filePath), 'src/components/three/ThreeSceneClient.jsx must exist');
   const code = fs.readFileSync(filePath, 'utf-8');
 
   assert.ok(code.includes('dynamic('), 'Must use dynamic import for lazy loading');

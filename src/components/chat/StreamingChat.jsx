@@ -378,6 +378,10 @@ export function StreamingChat() {
         ref={containerRef}
         onScroll={handleScroll}
         className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 touch-pan-y"
+        role="region"
+        aria-label="Chat messages transcript"
+        aria-live="polite"
+        aria-atomic="false"
       >
         {/* DESIGNED EMPTY STATE (Onboarding with click-to-fill action cards) */}
         {messages.length === 0 && (
@@ -563,6 +567,8 @@ export function StreamingChat() {
         <form onSubmit={handleSend} className="flex items-center gap-2">
           <input
             type="text"
+            id="chat-prompt-input"
+            aria-label="Ask a question or enter prompt"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={
@@ -580,8 +586,9 @@ export function StreamingChat() {
             <button
               type="button"
               onClick={handleStop}
-              className="flex items-center gap-1.5 rounded-xl bg-rose-600 px-4 py-3 text-xs sm:text-sm font-semibold text-white shadow-lg shadow-rose-600/20 hover:bg-rose-500 transition-all shrink-0 cursor-pointer"
-              title="Stop Generation"
+              aria-label="Stop AI streaming generation"
+              className="flex items-center gap-1.5 rounded-xl bg-rose-600 px-4 py-3 text-xs sm:text-sm font-semibold text-white shadow-lg shadow-rose-600/20 hover:bg-rose-500 focus-visible:ring-2 focus-visible:ring-rose-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#090d16] outline-none transition-all shrink-0 cursor-pointer"
+              title="Stop Generation (Escape/Enter reachable)"
             >
               <Square className="h-4 w-4 fill-white" />
               <span className="hidden sm:inline">Stop</span>
@@ -590,7 +597,8 @@ export function StreamingChat() {
             <button
               type="submit"
               disabled={!input.trim()}
-              className="flex items-center gap-1.5 rounded-xl bg-primary px-5 py-3 text-xs sm:text-sm font-semibold text-white shadow-lg shadow-primary/20 hover:bg-primary-hover transition-all disabled:opacity-40 shrink-0 cursor-pointer"
+              aria-label="Send message to AI assistant"
+              className="flex items-center gap-1.5 rounded-xl bg-primary px-5 py-3 text-xs sm:text-sm font-semibold text-white shadow-lg shadow-primary/20 hover:bg-primary-hover focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#090d16] outline-none transition-all disabled:opacity-40 shrink-0 cursor-pointer"
             >
               <Send className="h-4 w-4" />
               <span className="hidden sm:inline">Send</span>
