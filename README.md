@@ -2,9 +2,10 @@
 
 ![Track](https://img.shields.io/badge/Track-Frontend_AI_Engineering-blue.svg)
 ![Candidate](https://img.shields.io/badge/Engineer-KM_Siam-emerald.svg)
+![AI Platform](https://img.shields.io/badge/AI_Platform-Google_Antigravity-4285F4.svg)
+![Model](https://img.shields.io/badge/Model-Gemini_3.8_Flash_High-orange.svg)
 ![Node.js](https://img.shields.io/badge/Node.js-v24.13.1_LTS-green.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x_Strict-blue.svg)
-![AI Assistant](https://img.shields.io/badge/Toolchain-Claude_Code_&_Cursor-purple.svg)
 ![License](https://img.shields.io/badge/License-MIT-gray.svg)
 
 This repository contains the complete portfolio of assignments, prototypes, and capstone projects developed during the **FlyRank Frontend AI Engineering Internship**. It reflects a disciplined, AI-accelerated frontend development workflow adhering to industry best practices in modern web architecture, accessibility (WCAG 2.1 AA), and streaming AI primitives.
@@ -48,11 +49,11 @@ The projects across this track demonstrate mastery in five foundational frontend
 
 | Tool / Runtime | Installed Version | Purpose / Role |
 | :--- | :--- | :--- |
+| **Primary AI Platform** | **Google Antigravity** (Gemini 3.8 Flash High) | DeepMind Advanced Agentic Coding IDE, CLI, and autonomous reasoning engine |
 | **Node.js** | `v24.13.1` (LTS) | Core JavaScript/TypeScript execution runtime |
 | **npm** | `11.8.0` | Package manager and script lifecycle runner |
 | **Git** | `2.55.0.windows.4` | Version control with Conventional Commits 1.0.0 |
-| **Claude Code CLI** | `2.1.138` | Agentic terminal assistant for repo-wide code generation |
-| **Cursor / VS Code** | Latest Stable | AI-first editor leveraging `.cursorrules` and LSP |
+| **Cross-Tool Compatibility** | Claude Code `2.1.138` / Cursor / VS Code | Multi-assistant specification compatibility via `CLAUDE.md` and `.cursorrules` |
 | **TypeScript** | `5.x` | Strict compile-time safety and discriminated union states |
 
 ---
@@ -136,8 +137,10 @@ Every commit in this repository follows strict [Conventional Commits](https://ww
 
 ## 7. AI Assistant Configuration & Governance
 
-This repository is pre-configured for autonomous pair programming with **Claude Code** and **Cursor**:
-- **[`CLAUDE.md`](./CLAUDE.md):** Defines stack conventions, component architectures, forbidden patterns (`any`, unhandled promises), and operating guardrails for Claude Code CLI.
+This repository is engineered using **Google Antigravity (Powered by Gemini 3.8 Flash High)** with complete multi-assistant interoperability:
+- **[`AGY.md`](./AGY.md):** Primary Google Antigravity architecture guidelines, agentic conventions, and 3 project rules from FE-03.
+- **[`CLAUDE.md`](./CLAUDE.md):** Claude Code configuration mirror ensuring cross-platform evaluator compatibility.
+- **[`.cursorrules`](./.cursorrules):** Cursor IDE configuration mirror (`.cursor/rules/frontend-ai.mdc`).
 - **[`BUILDLOG.md`](./BUILDLOG.md):** Captures engineering prompts, AI critique sessions, and architectural pivots across milestones.
 - **[`EVIDENCE.md`](./EVIDENCE.md):** Documents verifiable execution outputs and validation criteria.
 

@@ -1,8 +1,10 @@
 # Cursor Rules for FlyRank Frontend AI Engineering
+# Primary AI Environment: Google Antigravity (Powered by Gemini 3.8 Flash High)
 
 You are an expert Frontend AI Systems Engineer working on the FlyRank Frontend AI Engineering Track.
 
 ## Stack & Environment
+- Primary AI Platform: Google Antigravity (Gemini 3.8 Flash High) / Cursor IDE
 - Runtime: Node.js (LTS v24+), TypeScript 5 (Strict Mode)
 - Frameworks: Next.js (App Router), React 19, Vite
 - Styling: Tailwind CSS, Shadcn UI / Radix primitives, Lucide icons

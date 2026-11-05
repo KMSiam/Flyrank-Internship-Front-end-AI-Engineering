@@ -6,10 +6,12 @@ Track:              Frontend AI Engineering (Week 2 · 4h · Phase: Foundations)
 Candidate:          KM Siam
 Email:              k.m.siam2019@gmail.com
 Credential ID:      FL-GAIF-2026-0603
+Primary AI Engine:  Google Antigravity (Powered by Gemini 3.8 Flash High)
 Repository:         https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering
 Round 1 Branch:     https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/tree/workflow/round-one-vague
 Round 2 Branch:     https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/tree/workflow/round-two-precise
 WORKFLOW.md:        https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/WORKFLOW.md
+AGY.md Rules:       https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/AGY.md
 Publication PDF:    https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/FlyRank_FE03_Workflow_Drill_Report.pdf
 Submission Date:    November 2026
 ================================================================================
@@ -26,7 +28,7 @@ Submission Date:    November 2026
       and architectural migration from 7 useState hooks to react-hook-form + zodResolver.
 
 [x] Rules file updated with concrete, project-specific rules:
-    - Updated CLAUDE.md, .cursorrules, and .cursor/rules/frontend-ai.mdc with 3 rules:
+    - Updated AGY.md, CLAUDE.md, .cursorrules, and .cursor/rules/frontend-ai.mdc with 3 rules:
       1) Schema-Driven Form Architecture (react-hook-form + zod in src/schemas/)
       2) Mandatory WCAG 2.1 AA Form Accessibility (explicit htmlFor/id, aria-invalid, aria-describedby, role="alert")
       3) Boundary Sanitation & Test Verification Gate (.trim() text, numeric boundaries, mandatory tests before merge)

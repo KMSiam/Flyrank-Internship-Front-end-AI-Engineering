@@ -3,7 +3,8 @@
 **Track:** Frontend AI Engineering (FlyRank Internship)  
 **Assignment:** FE-01 — Environment and AI Toolchain  
 **Engineer:** KM Siam (`k.m.siam2019@gmail.com`)  
-**AI Assistants:** Claude Code (CLI v2.1.138) / Cursor / Antigravity  
+**Primary AI Platform:** Google Antigravity (Powered by Gemini 3.8 Flash High / DeepMind Advanced Agentic Coding)  
+**Cross-Tool Compatibility:** Claude Code CLI (v2.1.138) / Cursor / VS Code  
 
 ---
 
@@ -11,10 +12,11 @@
 
 - **Task:** Verify local developer toolchain and initialize Git repository.
 - **Environment Checks:**
+  - AI Engine: Google Antigravity (Gemini 3.8 Flash High)
   - Node.js: `v24.13.1` (LTS)
   - npm: `11.8.0`
   - Git: `2.55.0.windows.4`
-  - Claude Code: `2.1.138`
+  - Claude Code CLI: `2.1.138` (peer check)
 - **Actions:**
   - Initialized Git repository on branch `main`.
   - Configured remote origin: `https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering.git`.

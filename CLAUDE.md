@@ -1,11 +1,12 @@
 # CLAUDE.md — Frontend AI Engineering Guidelines
 
-This repository hosts projects, capstones, and weekly assignments for the **FlyRank Frontend AI Engineering Track**. All AI assistants (Claude Code, Cursor, Antigravity) must strictly follow these instructions, conventions, and architectural standards.
+This repository hosts projects, capstones, and weekly assignments for the **FlyRank Frontend AI Engineering Track**. The primary AI engineering environment is **Google Antigravity (Powered by Gemini 3.8 Flash High / Advanced Agentic Coding)**. This file and `.cursorrules` are maintained to ensure seamless cross-platform evaluation across Google Antigravity, Claude Code, and Cursor.
 
 ---
 
 ## 1. Project Overview & Mission
 
+- **Primary AI Platform:** Google Antigravity (Powered by Gemini 3.8 Flash High)
 - **Track:** Frontend AI Engineering (FlyRank Internship)
 - **Author / Engineer:** KM Siam (`k.m.siam2019@gmail.com`)
 - **Primary Objective:** Build reliable, production-ready, accessible, and performant frontend applications tightly integrated with modern AI primitives (Generative UI, streaming completions, multimodal inputs, agentic visual workflows, and client-side optimization).

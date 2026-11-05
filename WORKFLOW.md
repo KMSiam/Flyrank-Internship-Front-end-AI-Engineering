@@ -2,6 +2,7 @@
 
 **Track:** Frontend AI Engineering · **Assignment:** FE-03  
 **Candidate:** KM Siam (`k.m.siam2019@gmail.com`)  
+**Primary AI Engine:** Google Antigravity (Powered by Gemini 3.8 Flash High)  
 **Branches Evaluated:** `workflow/round-one-vague` vs. `workflow/round-two-precise`  
 
 ---
