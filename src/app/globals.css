@@ -16,12 +16,21 @@
   box-sizing: border-box;
 }
 
+html {
+  /* Prevent iOS Safari 300ms tap delay and double-tap zoom jitter */
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background-color: #090d16;
   color: #f8fafc;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Custom dark scrollbar */

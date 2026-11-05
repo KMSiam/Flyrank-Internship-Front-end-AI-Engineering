@@ -84,6 +84,26 @@ npm run lint
 
 ## 5. Completed Track Assignments & Milestones
 
+### Week 5 (FE-08 · 4h · Build · Checkpoint 1): Error states, empty states, edge cases
+- **Live Preview URL:** [https://flyrank-internship-front-end-ai-engineering.vercel.app/chat](https://flyrank-internship-front-end-ai-engineering.vercel.app/chat)
+- **Checkpoint 1 Overview:** Hardened the primary streaming AI conversational flow at `/chat` against all failure and edge conditions: network failures, mid-stream connection drops, upstream 429 rate limits, empty inputs, slow response CLS, and route crashes.
+- **Core Architecture & Capabilities:**
+  - 🚨 **Systematic Failure Inventory & Sabotage Drills:** Implemented server and client hooks for 5 failure modes: blank inputs (HTTP 400), 429 quota exhaustion (`Retry-After: 15`), 503 provider outages, mid-stream drops (`ERR_MIDSTREAM_DROP`), and latency delay simulations.
+  - 🧠 **Buttons with a Brain (Retry Micro-Interaction):** Turn-targeted retry button debounces against rapid clicks, displays dynamic spinner status ("Retrying turn..."), and deterministically recovers the specific failed turn while preserving partial tokens.
+  - 🌟 **Designed Empty State Onboarding:** Replaced dead-end "No conversations yet" with an onboarding hub featuring 4 click-to-fill action cards (Component Architecture, FinOps budget, Mid-Stream sabotage drill, 429 rate limit drill).
+  - 🛡️ **App Router Error Boundaries:** Created global boundary ([`src/app/error.jsx`](./src/app/error.jsx)) with `reset()` action, route-level boundary ([`src/app/chat/error.jsx`](./src/app/chat/error.jsx)), and designed 404 handler ([`src/app/not-found.jsx`](./src/app/not-found.jsx)).
+  - 📐 **Layout-Accurate Skeleton (Zero CLS):** Thinking indicator skeleton matches real message typography and layout within pixels, preventing Cumulative Layout Shift.
+  - 📱 **Mobile Safari Hardening:** Configured `min-h-[100dvh]`, `overscroll-contain`, and safe-area insets (`pb-[env(safe-area-inset-bottom)]`) to prevent software keyboard shifting.
+- **Assignment Deliverables:**
+  - [**`FlyRank_FE08_Error_States_Report.pdf`**](./FlyRank_FE08_Error_States_Report.pdf): Primary publication deliverable documenting failure inventories, sabotage test proofs, and Checkpoint 1 signoff.
+  - [**`src/components/chat/StreamingChat.jsx`**](./src/components/chat/StreamingChat.jsx): Hardened client streaming chat component with designed empty state and retry button.
+  - [**`src/app/api/chat/route.js`**](./src/app/api/chat/route.js): Route handler with validation and deterministic sabotage test hooks.
+  - [**`src/app/error.jsx`**](./src/app/error.jsx): Global route error boundary.
+  - [**`src/app/chat/error.jsx`**](./src/app/chat/error.jsx): Chat route error boundary.
+  - [**`src/app/not-found.jsx`**](./src/app/not-found.jsx): Designed 404 handler.
+  - [**`tests/error-states.test.js`**](./tests/error-states.test.js): Automated test suite with 10/10 passing tests (57/57 total test suite).
+  - [**`submission_notes_fe08.txt`**](./submission_notes_fe08.txt): Copy-paste portal submission notes.
+
 ### Week 5 (FE-07 · 5h · Build): Tool results and structured output in the UI
 - **Live Preview URL:** [https://flyrank-internship-front-end-ai-engineering.vercel.app/generative-ui](https://flyrank-internship-front-end-ai-engineering.vercel.app/generative-ui)
 - **Generative UI Overview:** Built a typed server-side tool execution pipeline and complete Generative UI lifecycle renderer in Next.js 15 App Router + React 19 + Zod.

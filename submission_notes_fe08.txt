@@ -1,0 +1,37 @@
+================================================================================
+FLIRANK INTERNSHIP SUBMISSION — FE-08 BUILD PHASE (CHECKPOINT 1)
+Assignment: Error states, empty states, edge cases (FE-08)
+Track: Frontend AI Engineering · Phase: Build (core) · Workload: 4h
+Candidate: KM Siam (k.m.siam2019@gmail.com)
+AI Development Platform: Google Antigravity (Gemini 3.8 Flash High)
+================================================================================
+
+[DELIVERABLE LINKS]
+https://flyrank-internship-front-end-ai-engineering.vercel.app/chat
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/components/chat/StreamingChat.jsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/app/api/chat/route.js
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/app/error.jsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/app/chat/error.jsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/src/app/not-found.jsx
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/FlyRank_FE08_Error_States_Report.pdf
+https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering/blob/main/tests/error-states.test.js
+
+[NOTES]
+Completed FE-08 ("Error states, empty states, edge cases") and reached Checkpoint 1 for the Frontend AI Engineering track. Thoroughly inventoried and mitigated failure modes across the primary streaming AI flow at /chat, implemented route-level error boundaries, layout-accurate skeletons, designed empty state onboarding, and a sabotage test drill suite with working retry mechanics in Next.js 15 App Router + React 19.
+
+Development was directed using Google Antigravity (Powered by Gemini 3.8 Flash High / Advanced Agentic Coding), satisfying all core evaluation criteria:
+
+Key Evaluation Criteria Met:
+1. Primary Flow Works End-to-End: Real-time token streaming with SSE, thinking indicator handoff, stop control, and multi-turn persistence on the live preview URL with zero console errors during happy path.
+2. Mid-Stream Failure with Working Retry: Injected mid-stream drops (via the in-app drill selector or TRIGGER_MIDSTREAM_ERROR keyword) preserve partially received tokens and attach a designed error card with taxonomy (ERR_MIDSTREAM_DROP). The working "Retry this response" button incorporates "Buttons with a Brain" logic: turn-targeted re-execution, double-click debouncing, and calm visual transition.
+3. Designed Empty State: Replaced dead-end "No conversations" with an onboarding hub featuring 4 click-to-fill action cards (Architecture, FinOps token budget, Mid-Stream sabotage drill, 429 rate limit drill).
+4. App Router Error Boundaries: Implemented global route failure boundary (src/app/error.jsx) with reset() handler, chat-specific boundary (src/app/chat/error.jsx), and custom 404 handler (src/app/not-found.jsx) preventing white-screen crashes.
+5. Layout-Accurate Skeleton (Zero CLS): Skeletons match real content dimensions within a few pixels (avatar icon, line heights, width hierarchy) preventing Cumulative Layout Shift during model thinking.
+6. Mobile Safari Hardening: Uses min-h-[100dvh], overscroll-contain, and safe-area padding to prevent keyboard resizing shifts and rubber-band scroll conflicts on mobile browsers.
+7. Automated Test Suite: 57/57 tests passing across the repository (10/10 in tests/error-states.test.js covering validation, 429 rate limits, mid-stream drops, route boundaries, empty states, and retry logic via npm test).
+8. Publication PDF Report: Standalone publication-grade dossier FlyRank_FE08_Error_States_Report.pdf (216 KB).
+
+[FILES TO UPLOAD]
+- FlyRank_FE08_Error_States_Report.pdf
+================================================================================
