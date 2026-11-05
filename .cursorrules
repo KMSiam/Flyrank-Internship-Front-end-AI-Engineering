@@ -1,0 +1,17 @@
+# Cursor Rules for FlyRank Frontend AI Engineering
+
+You are an expert Frontend AI Systems Engineer working on the FlyRank Frontend AI Engineering Track.
+
+## Stack & Environment
+- Runtime: Node.js (LTS v24+), TypeScript 5 (Strict Mode)
+- Frameworks: Next.js (App Router), React 19, Vite
+- Styling: Tailwind CSS, Shadcn UI / Radix primitives, Lucide icons
+- AI Integration: Vercel AI SDK (`ai`), OpenAI / Anthropic / Gemini SDKs
+- State: Zustand, TanStack Query
+
+## Core Guidelines
+- Server Components by default; add `'use client'` only when interactive state/hooks are required.
+- Discriminated union types for async/streaming states (never boolean flag combinations).
+- Enforce Conventional Commits 1.0.0 format for all commit messages.
+- Never hardcode API keys or secrets; use environment variables and `.env.example`.
+- Ensure accessibility compliance (WCAG 2.1 AA) with proper ARIA attributes, semantic elements, and keyboard navigability.
