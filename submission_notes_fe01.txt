@@ -1,0 +1,59 @@
+================================================================================
+FLYRANK FRONTEND AI ENGINEERING TRACK — ASSIGNMENT SUBMISSION NOTES
+================================================================================
+Assignment:         FE-01: Environment and AI Toolchain
+Track:              Frontend AI Engineering (Week 1 · 3h · Phase: Setup)
+Candidate:          KM Siam
+Email:              k.m.siam2019@gmail.com
+Credential ID:      FL-GAIF-2026-0603
+Repository URL:     https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering
+Deliverables:       Repository URL, Conventional Commits Git History,
+                    AI-Critiqued README, Screenshot of Claude Code in terminal,
+                    Publication PDF Report (FlyRank_FE01_Environment_Toolchain_Report.pdf)
+Submission Date:    November 2026
+================================================================================
+
+1. EVALUATION CRITERIA COMPLIANCE
+--------------------------------------------------------------------------------
+[x] Repo has README, LICENSE, and CLAUDE.md / rules file:
+    - README.md: Comprehensive track portal with architecture and setup guide
+    - LICENSE: MIT Open Source License (c) 2026 KM Siam
+    - CLAUDE.md: Complete engineering guidelines for Claude Code CLI
+    - .cursorrules & .cursor/rules/frontend-ai.mdc: IDE-level rules for Cursor
+    - .gitignore: Comprehensive multi-framework ignore rules
+    - package.json: Root scripts, metadata, and dependencies
+
+[x] At least three commits in Conventional Commits format:
+    1. chore: initialize repository with README, license, and gitignore
+    2. docs: add CLAUDE.md and cursorrules for AI assistant toolchain
+    3. docs(readme): critique and enrich README with complete AI toolchain guide
+    4. docs(evidence): add Claude Code toolchain execution screenshot and evidence
+
+[x] Ask your AI assistant to critique your README and apply one improvement:
+    - 4-point critique performed by Claude Code evaluating initial stub
+    - Improvement applied: Complete re-architecture of README with shields,
+      5-tier capability diagram, toolchain matrix, and commit protocol.
+    - Full critique and rationale documented in BUILDLOG.md and EVIDENCE.md.
+
+[x] Screenshot shows Claude Code or Cursor working:
+    - Captured in Windows Terminal: screenshot_claude_code.png
+    - Mirrored in docs/screenshots/claude_code_task.png
+
+2. VERIFIED ENVIRONMENT & TOOLCHAIN MATRIX
+--------------------------------------------------------------------------------
+- Node.js:          v24.13.1 (LTS)
+- npm:              11.8.0
+- Git:              2.55.0.windows.4
+- Claude Code CLI:  2.1.138
+- Cursor / VS Code: 1.95.3
+
+3. REPOSITORY QUICKSTART
+--------------------------------------------------------------------------------
+git clone https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering.git
+cd Flyrank-Internship-Front-end-AI-Engineering
+npm install
+npm run lint
+
+================================================================================
+Generated and verified on Node.js v24.13.1 · All systems production-ready.
+================================================================================

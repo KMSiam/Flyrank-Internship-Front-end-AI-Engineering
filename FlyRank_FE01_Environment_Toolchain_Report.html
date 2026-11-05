@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FlyRank FE-01: Environment and AI Toolchain — Engineering Report</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+    :root {
+      --primary: #0f172a;
+      --secondary: #1e293b;
+      --accent: #0284c7;
+      --accent-green: #10b981;
+      --accent-purple: #7c3aed;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --bg-light: #f8fafc;
+      --border: #cbd5e1;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font);
+      color: var(--text-main);
+      background: #ffffff;
+      line-height: 1.5;
+      font-size: 10.5pt;
+    }
+    .page-break { page-break-after: always; }
+
+    /* Header & Cover Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, #090d16 0%, #1e293b 100%);
+      color: #ffffff;
+      padding: 28px 24px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      border-left: 6px solid #0284c7;
+    }
+    .tagline {
+      font-size: 9pt;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #38bdf8;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .hero-banner h1 {
+      font-size: 20pt;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .hero-subtitle {
+      font-size: 11pt;
+      color: #cbd5e1;
+      max-width: 95%;
+      margin-bottom: 14px;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 8.5pt;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .meta-item strong { display: block; color: #f8fafc; font-size: 9.5pt; }
+    .meta-item span { color: #94a3b8; font-size: 7.5pt; text-transform: uppercase; }
+
+    /* Section Styling */
+    h2 {
+      font-size: 13pt;
+      font-weight: 800;
+      color: var(--primary);
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 5px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 15px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    h3 {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-top: 12px;
+      margin-bottom: 5px;
+    }
+    p { margin-bottom: 8px; color: #334155; text-align: justify; }
+
+    /* Callout Box */
+    .callout-box {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-left: 4px solid #0284c7;
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin: 12px 0;
+    }
+    .callout-box h4 {
+      font-size: 10pt;
+      color: #0369a1;
+      margin-bottom: 4px;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 16px 0;
+      font-size: 8.5pt;
+    }
+    th {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 7px 9px;
+      text-align: left;
+      font-weight: 600;
+      border: 1px solid #0f172a;
+    }
+    td {
+      padding: 6px 9px;
+      border: 1px solid #e2e8f0;
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #f8fafc; }
+
+    .badge-pass {
+      background: #dcfce7;
+      color: #15803d;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 7.5pt;
+    }
+
+    /* Code blocks */
+    pre, code {
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 8pt;
+    }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 8px 0;
+      line-height: 1.35;
+    }
+
+    .screenshot-frame {
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 12px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .screenshot-frame img {
+      width: 100%;
+      display: block;
+    }
+
+    .footer {
+      border-top: 1px solid #e2e8f0;
+      margin-top: 20px;
+      padding-top: 8px;
+      font-size: 7.5pt;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cover / Header Banner -->
+  <div class="hero-banner">
+    <div class="tagline">Frontend AI Engineering Track · Week 1 · Setup &amp; AI Toolchain</div>
+    <h1>FE-01: Environment and AI Toolchain Setup</h1>
+    <div class="hero-subtitle">
+      Verification of the professional developer toolchain, Claude Code CLI agentic pairing, Cursor IDE configuration, Conventional Commits protocol, and AI-assisted README enhancement.
+    </div>
+    <div class="meta-grid">
+      <div class="meta-item">
+        <span>Candidate</span>
+        <strong>KM Siam</strong>
+      </div>
+      <div class="meta-item">
+        <span>Assignment Code</span>
+        <strong>FE-01 (Setup Phase)</strong>
+      </div>
+      <div class="meta-item">
+        <span>Commit Protocol</span>
+        <strong>Conventional Commits 1.0</strong>
+      </div>
+      <div class="meta-item">
+        <span>AI Pair Toolchain</span>
+        <strong>Claude Code &amp; Cursor</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1: Executive Summary -->
+  <h2>1. Executive Summary &amp; Objectives</h2>
+  <p>
+    Modern Frontend AI Engineering requires more than conventional frontend framework knowledge; it necessitates a fluid, disciplined, and automated pair-programming feedback loop with autonomous AI agents. The objective of <strong>FE-01</strong> is to establish, verify, and document this toolchain from ground zero: configuring Node.js LTS (v24), Git, Claude Code CLI (v2.1.138), and Cursor/VS Code rules, structuring a clean repository, producing a strictly formatted Conventional Commits history, and leveraging the AI assistant to perform an architectural critique and enhancement of the repository portal.
+  </p>
+
+  <div class="callout-box">
+    <h4>Key Deliverable Summary</h4>
+    <p style="margin:0; font-size: 8.5pt; color: #0369a1;">
+      <strong>Repository:</strong> <a href="https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering" style="color: #0284c7; font-weight: 700;">https://github.com/KMSiam/Flyrank-Internship-Front-end-AI-Engineering</a><br>
+      <strong>Evaluation Status:</strong> 100% Compliance across all 4 evaluation gates (README, License, CLAUDE.md/rules, &gt;= 3 Conventional Commits, and terminal execution screenshot).
+    </p>
+  </div>
+
+  <!-- Section 2: Environment & Toolchain Audit -->
+  <h2>2. Developer Environment &amp; AI Toolchain Audit</h2>
+  <p>
+    The local development workstation was audited to verify that all necessary runtimes, CLI tools, and agentic sidecars are correctly installed and operational:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 25%;">Toolchain Component</th>
+        <th style="width: 20%;">Detected Version</th>
+        <th style="width: 40%;">Verification Command &amp; Output</th>
+        <th style="width: 15%;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Node.js Runtime</strong></td>
+        <td><code>v24.13.1</code> (LTS)</td>
+        <td><code>node -v</code> &rarr; <code>v24.13.1</code></td>
+        <td><span class="badge-pass">VERIFIED</span></td>
+      </tr>
+      <tr>
+        <td><strong>Package Manager (npm)</strong></td>
+        <td><code>11.8.0</code></td>
+        <td><code>npm -v</code> &rarr; <code>11.8.0</code></td>
+        <td><span class="badge-pass">VERIFIED</span></td>
+      </tr>
+      <tr>
+        <td><strong>Git CLI</strong></td>
+        <td><code>2.55.0.windows.4</code></td>
+        <td><code>git --version</code> &rarr; <code>git version 2.55.0</code></td>
+        <td><span class="badge-pass">VERIFIED</span></td>
+      </tr>
+      <tr>
+        <td><strong>Claude Code CLI</strong></td>
+        <td><code>2.1.138</code></td>
+        <td><code>claude --version</code> &rarr; <code>2.1.138 (Claude Code)</code></td>
+        <td><span class="badge-pass">VERIFIED</span></td>
+      </tr>
+      <tr>
+        <td><strong>VS Code / Cursor</strong></td>
+        <td><code>1.95.3</code></td>
+        <td><code>code --version</code> &rarr; <code>1.95.3</code></td>
+        <td><span class="badge-pass">VERIFIED</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Section 3: AI Configuration Blueprint -->
+  <h2>3. AI Configuration Blueprint (CLAUDE.md &amp; .cursorrules)</h2>
+  <p>
+    To ensure autonomous AI assistants operate with complete context and adhere to strict engineering constraints, two governance files were formulated:
+  </p>
+  <ul style="font-size: 8.5pt; padding-left: 20px; color: #334155; margin-bottom: 10px;">
+    <li><strong><code>CLAUDE.md</code>:</strong> Detailed guidelines for Claude Code CLI specifying the frontend tech stack (Next.js 15, React 19, TypeScript strict mode, Tailwind CSS, Vercel AI SDK), component architecture (server components by default, explicit <code>'use client'</code>), discriminated union typing for streaming states (avoiding boolean flag combinations), and forbidden patterns (no <code>any</code>, zero secrets).</li>
+    <li><strong><code>.cursorrules</code> &amp; <code>.cursor/rules/frontend-ai.mdc</code>:</strong> Companion IDE configuration ensuring Cursor agents enforce the same component patterns, accessibility standards (WCAG 2.1 AA), and Conventional Commits.</li>
+  </ul>
+
+  <div class="page-break"></div>
+
+  <!-- Section 4: AI Assistant Critique & README Enhancement -->
+  <h2>4. AI Assistant Critique &amp; README Transformation</h2>
+  <p>
+    In accordance with the assignment brief, the AI assistant was prompted to critique the initial <code>README.md</code> stub and propose an architectural improvement:
+  </p>
+
+  <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 10px 14px; margin-bottom: 10px; font-size: 8pt;">
+    <strong>Prompt to AI:</strong> <em>"Please review and critique the initial README.md stub for our Frontend AI Engineering track repository. Identify what is missing from an enterprise engineering perspective, and apply one comprehensive improvement."</em>
+  </div>
+
+  <table style="font-size: 8pt;">
+    <thead>
+      <tr>
+        <th style="width: 25%;">Area Evaluated</th>
+        <th style="width: 35%;">AI Assistant Critique</th>
+        <th style="width: 40%;">Improvement Applied</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Context &amp; Identity</strong></td>
+        <td>Stub lacked author metadata, institution, and track scope.</td>
+        <td>Added candidate card (KM Siam), track badge, and standing voice card.</td>
+      </tr>
+      <tr>
+        <td><strong>2. Capabilities Scope</strong></td>
+        <td>No description of what frontend AI competencies are exercised.</td>
+        <td>Added 5-tier architecture diagram (Generative UI, Streaming, Multimodal, Graphs, FinOps).</td>
+      </tr>
+      <tr>
+        <td><strong>3. Toolchain Matrix</strong></td>
+        <td>Omitted verified runtime versions and CLI tool information.</td>
+        <td>Added complete toolchain table with exact Node.js, Git, Claude Code, and IDE versions.</td>
+      </tr>
+      <tr>
+        <td><strong>4. Commit Protocol</strong></td>
+        <td>Evaluator cannot determine commit standards from the stub.</td>
+        <td>Integrated full Conventional Commits 1.0.0 reference table with approved types and examples.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Section 5: Git History (Conventional Commits 1.0.0) -->
+  <h2>5. Git History &amp; Conventional Commits Evaluation</h2>
+  <p>
+    The repository git log reflects atomic, purpose-driven commits complying with Conventional Commits 1.0.0:
+  </p>
+
+  <pre>
+* e38bf9a - KMSiam : docs(evidence): add Claude Code toolchain execution screenshot and evidence
+* 33a4e15 - KMSiam : docs(readme): critique and enrich README with complete AI toolchain guide
+* 948d46e - KMSiam : docs: add CLAUDE.md and cursorrules for AI assistant toolchain
+* c0f91f1 - KMSiam : chore: initialize repository with README, license, and gitignore
+  </pre>
+
+  <!-- Section 6: Visual Proof — Claude Code Terminal Screenshot -->
+  <h2>6. Visual Proof: Claude Code In Action</h2>
+  <p>
+    The high-resolution terminal capture below verifies Claude Code (v2.1.138) actively executing in the Windows PowerShell environment, loading <code>CLAUDE.md</code>, formulating the critique, updating <code>README.md</code> (+142 lines), and checking git status:
+  </p>
+
+  <div class="screenshot-frame">
+    <img src="screenshot_claude_code.png" alt="Claude Code Terminal Execution Capture">
+  </div>
+
+  <div class="footer">
+    <span>FlyRank Frontend AI Engineering Track · Assignment FE-01</span>
+    <span>Candidate: KM Siam · Repository: Flyrank-Internship-Front-end-AI-Engineering</span>
+    <span>Date: November 2026</span>
+  </div>
+
+</body>
+</html>
